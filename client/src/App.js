@@ -73,7 +73,7 @@ class App extends Component {
             <tbody>
               {this.state.tracks.map(track =>
                 <tr key={track.id}>
-                  <td><img src={track.art} height="150" width="150"/></td>
+                  <td><img src={track.art} height="150" width="150" alt="art"/></td>
                   <td>
                     <p><font size = "24">{track.artist}</font></p>
                     <p><i>{track.title}</i></p>
