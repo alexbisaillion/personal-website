@@ -5,7 +5,7 @@ class SongStats extends Component {
   state = {tracks: []}
 
   componentDidMount() {
-    fetch('/stats')
+    fetch('/stats?timeRange=short_term&numTracks=5')
       .then(res => res.json())
       .then(tracks => this.setState({ tracks }));
   }
