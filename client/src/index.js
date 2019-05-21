@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Intro from './components/Intro';
 import SongStats from './components/SongStats';
-import ArtistStats from './components/ArtistStats'
+import ArtistStats from './components/ArtistStats';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Intro />, document.getElementById('intro'));

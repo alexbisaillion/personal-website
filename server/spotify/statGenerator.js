@@ -16,32 +16,59 @@ function refreshCredentials() {
 module.exports = {
     getTopTracks: function (timeRange, numResults) {
         return refreshCredentials().then(function() {
-            return spotifyApi.getMyTopTracks({time_range: timeRange, limit : numResults, offset : 0 });
+            return spotifyApi.getMyTopTracks({time_range: timeRange, limit : numResults});
         }).then(function(data) {
-            return createTopTrackResponse(data);
+            return createTopTracksResponse(data);
         })
     },
     getTopArtists: function (timeRange, numResults) {
         return refreshCredentials().then(function() {
-            return spotifyApi.getMyTopArtists({time_range: timeRange, limit : numResults, offset : 0 });
+            return spotifyApi.getMyTopArtists({time_range: timeRange, limit : numResults});
         }).then(function(data) {
-            return createTopArtistResponse(data);
+            return createTopArtistsResponse(data);
         })
     },
+    getCurrentTrack: function () {
+        return refreshCredentials().then(function() {
+            return spotifyApi.getMyCurrentPlayingTrack();
+        }).then(function (data) {
+            return createCurrentTrackResponse(data);
+        });
+    },
+    getRecentTracks: function (numResults) {
+        return refreshCredentials().then(function() {
+            return spotifyApi.getMyRecentlyPlayedTracks({limit : numResults});
+        }).then(function (data) {
+            return createRecentTracksResponse(data);
+        });
+    }
 };
 
-function createTopTrackResponse(data) {
+function createTopTracksResponse(data) {
     var tracks = [];
     for (let i = 0; i < data.body.items.length; i++) {
-        tracks.push({id : i, artist: data.body.items[i].artists[0].name, title: data.body.items[i].name, art: data.body.items[i].album.images[0].url});
+        tracks.push({id : i, artist: data.body.items[i].artists[0].name, title: data.body.items[i].name, album: data.body.items[i].album.name, art: data.body.items[i].album.images[0].url});
     }
     return tracks;
 }
 
-function createTopArtistResponse(data) {
+function createTopArtistsResponse(data) {
     var artists = [];
     for (let i = 0; i < data.body.items.length; i++) {
         artists.push({id : i, name: data.body.items[i].name, image: data.body.items[i].images[0].url});
     }
     return artists;
+}
+
+function createCurrentTrackResponse(data) {
+    return ({artist: data.body.item.artists[0].name, track: data.body.item.name, album: data.body.item.album.name, art: data.body.item.album.images[0].url, isPlaying: data.body.is_playing})
+}
+
+function createRecentTracksResponse(data) {
+    console.log(data.body.items);
+    var tracks = [];
+    for (let i = 0; i < data.body.items.length; i++) {
+        tracks.push({id : i, artist: data.body.items[i].track.artists[0].name, title: data.body.items[i].track.name, art: data.body.items[i].track.album.images[0].url});
+    }
+    return tracks;
 }
