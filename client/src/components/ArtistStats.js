@@ -28,6 +28,12 @@ class ArtistStats extends Component {
     console.log('Time range was updated.');
   }
 
+  updateNumResults(newNumResults) {
+    fetch(`/stats?type=artists&timeRange=${this.state.timeRange}&numResults=${newNumResults}`).then(res => res.json()).then(artists => this.setState({ artists }));
+    this.setState({numResults: newNumResults});
+    console.log('Number of results was updated.');
+  }
+
   render() {
     return (
       <div className="ArtistStats">
@@ -36,11 +42,12 @@ class ArtistStats extends Component {
             <Dropdown.Item href="#" onClick={() => this.updateTimeRange("medium_term")}>Medium Term</Dropdown.Item>
             <Dropdown.Item href="#" onClick={() => this.updateTimeRange("long_term")}>Long Term</Dropdown.Item>
           </DropdownButton>
-        <table>
+          <input value={this.state.numResults} onChange={event => this.updateNumResults(event.target.value.replace(/\D/,''))}/>
+        <table cellPadding="20">
           <tbody>
             {this.state.artists.map(artist =>
               <tr key={artist.id}>
-                <td><img src={artist.image} height="150" width="150" alt="art"/></td>
+                <td style={{width: "150px"}}><img src={artist.image} height="150" width="150" alt="art"/></td>
                 <td>
                   <p><font size = "24">{artist.name}</font></p>
                   <p><i>{artist.name}</i></p>

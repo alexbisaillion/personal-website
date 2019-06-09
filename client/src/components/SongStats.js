@@ -27,6 +27,12 @@ class SongStats extends Component {
     console.log('Time range was updated.');
   }
 
+  updateNumResults(newNumResults) {
+    fetch(`/stats?type=tracks&timeRange=${this.state.timeRange}&numResults=${newNumResults}`).then(res => res.json()).then(tracks => this.setState({ tracks }));
+    this.setState({numResults: newNumResults});
+    console.log('Number of results was updated.');
+  }
+
   render() {
     return (
       <div className="SongStats">
@@ -35,7 +41,8 @@ class SongStats extends Component {
           <Dropdown.Item href="#" onClick={() => this.updateTimeRange("medium_term")}>Medium Term</Dropdown.Item>
           <Dropdown.Item href="#" onClick={() => this.updateTimeRange("long_term")}>Long Term</Dropdown.Item>
         </DropdownButton>
-          <table>
+        <input value={this.state.numResults} onChange={event => this.updateNumResults(event.target.value.replace(/\D/,''))}/>
+          <table cellPadding="20">
             <tbody>
               {this.state.tracks.map(track =>
                 <tr key={track.id}>
