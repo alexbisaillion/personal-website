@@ -47,7 +47,7 @@ module.exports = {
 function createTopTracksResponse(data) {
     var tracks = [];
     for (let i = 0; i < data.body.items.length; i++) {
-        tracks.push({id : i, artist: data.body.items[i].artists[0].name, title: data.body.items[i].name, album: data.body.items[i].album.name, art: data.body.items[i].album.images[0].url});
+        tracks.push({id : i, artist: data.body.items[i].artists[0].name, image: data.body.items[i].album.images[0].url, title: data.body.items[i].name});
     }
     return tracks;
 }
@@ -55,7 +55,7 @@ function createTopTracksResponse(data) {
 function createTopArtistsResponse(data) {
     var artists = [];
     for (let i = 0; i < data.body.items.length; i++) {
-        artists.push({id : i, name: data.body.items[i].name, image: data.body.items[i].images[0].url});
+        artists.push({id : i, artist: data.body.items[i].name, image: data.body.items[i].images[0].url});
     }
     return artists;
 }
