@@ -9,10 +9,18 @@ const ranges = {
   LONG_TERM: "long_term",
 }
 
+const timeRangeDisplayName = {
+  "short_term" : "Short Term",
+  "medium_term" : "Medium Term",
+  "long_term" : "Long Term"
+}
+
 class StatPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {items: [], numResults: 50, timeRange: ranges.SHORT_TERM, itemType: props.itemType};
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.updateResults = this.updateResults.bind(this);
   }
 
   componentDidMount() {
@@ -21,27 +29,33 @@ class StatPanel extends Component {
       .then(items => this.setState({ items }));
   }
 
-  updateTimeRange(newTimeRange) {
-    fetch(`/stats?type=${this.state.itemType}&timeRange=${newTimeRange}&numResults=${this.state.numResults}`).then(res => res.json()).then(items => this.setState({ items }));
-    this.setState({timeRange: newTimeRange});
-    console.log('Time range was updated.');
+  updateResults(event) {
+    fetch(`/stats?type=${this.state.itemType}&timeRange=${this.state.timeRange}&numResults=${this.state.numResults}`).then(res => res.json()).then(items => this.setState({ items }));
+    event.preventDefault();
   }
 
-  updateNumResults(newNumResults) {
-    fetch(`/stats?type=${this.state.itemType}&timeRange=${this.state.timeRange}&numResults=${newNumResults}`).then(res => res.json()).then(items => this.setState({ items }));
-    this.setState({numResults: newNumResults});
-    console.log('Number of results was updated.');
+  handleInputChange(event) {
+    this.setState({ [event.target.name] : event.target.value});
+  }
+
+  resultsForm() {
+    return (
+      <form onSubmit={this.updateResults}>
+        <select name="timeRange" value={this.state.timeRange} onChange={this.handleInputChange}>
+          <option value="short_term">Short Term</option>
+          <option value="medium_term">Medium Term</option>
+          <option value="long_term">Long Term</option>
+        </select>
+        <input name="numResults" type="number" value={this.state.numResults} onChange={this.handleInputChange}></input>
+        <input type="submit" value="Update" />
+      </form>
+    )
   }
 
   render() {
     return (
       <div className="StatPanel">
-          <DropdownButton id="dropdown-basic-button" title={this.state.timeRange}>
-            <Dropdown.Item href="#" onClick={() => this.updateTimeRange("short_term")}>Short Term</Dropdown.Item>
-            <Dropdown.Item href="#" onClick={() => this.updateTimeRange("medium_term")}>Medium Term</Dropdown.Item>
-            <Dropdown.Item href="#" onClick={() => this.updateTimeRange("long_term")}>Long Term</Dropdown.Item>
-          </DropdownButton>
-          <input value={this.state.numResults} onChange={event => this.updateNumResults(event.target.value.replace(/\D/,''))}/>
+        {this.resultsForm()}
         <table cellPadding="20">
           <tbody>
             {this.state.items.map(item =>
