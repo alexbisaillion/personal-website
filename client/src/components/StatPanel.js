@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Dropdown, DropdownButton} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import './StatPanel.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -7,12 +7,6 @@ const ranges = {
   SHORT_TERM: "short_term",
   MEDIUM_TERM: "medium_term",
   LONG_TERM: "long_term",
-}
-
-const timeRangeDisplayName = {
-  "short_term" : "Short Term",
-  "medium_term" : "Medium Term",
-  "long_term" : "Long Term"
 }
 
 class StatPanel extends Component {
@@ -40,15 +34,46 @@ class StatPanel extends Component {
 
   resultsForm() {
     return (
-      <form onSubmit={this.updateResults}>
-        <select name="timeRange" value={this.state.timeRange} onChange={this.handleInputChange}>
-          <option value="short_term">Short Term</option>
-          <option value="medium_term">Medium Term</option>
-          <option value="long_term">Long Term</option>
-        </select>
-        <input name="numResults" type="number" value={this.state.numResults} onChange={this.handleInputChange}></input>
-        <input type="submit" value="Update" />
-      </form>
+      <Row>
+        <form onSubmit={this.updateResults}>
+          <Col>
+            <select name="timeRange" value={this.state.timeRange} onChange={this.handleInputChange}>
+              <option value="short_term">Short Term</option>
+              <option value="medium_term">Medium Term</option>
+              <option value="long_term">Long Term</option>
+            </select>
+          </Col>
+          <Col>
+            <input name="numResults" type="number" value={this.state.numResults} onChange={this.handleInputChange}></input>
+          </Col>
+          <Col>
+            <input type="submit" value="Update" />
+          </Col>
+        </form>
+      </Row>
+    )
+  }
+
+  listEntry(item) {
+    /*
+    {this.state.items.map(item =>
+      this.listEntry(item)
+    )}
+    */
+    return (
+      <div key={item.id}>
+        <Row>
+          <Col>
+            <img src={item.image} height="150" width="150" alt="art"/>
+          </Col>
+          <Col>
+            <p><font size = "24">{item.artist}</font></p>
+            {this.state.itemType === "tracks" &&
+              <p><i>{item.title}</i></p>
+            }
+          </Col>
+        </Row>
+      </div>
     )
   }
 
