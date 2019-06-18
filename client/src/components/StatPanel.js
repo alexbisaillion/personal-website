@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import {Row, Col} from 'react-bootstrap';
+import {Container, Row, Col} from 'reactstrap';
 import './StatPanel.css';
-import 'bootstrap/dist/css/bootstrap.css';
 
 const ranges = {
   SHORT_TERM: "short_term",
@@ -34,23 +33,23 @@ class StatPanel extends Component {
 
   resultsForm() {
     return (
-      <Row>
-        <form onSubmit={this.updateResults}>
-          <Col>
+      <form onSubmit={this.updateResults}>
+        <Row>
+          <Col xs={4}>
             <select name="timeRange" value={this.state.timeRange} onChange={this.handleInputChange}>
               <option value="short_term">Short Term</option>
               <option value="medium_term">Medium Term</option>
               <option value="long_term">Long Term</option>
             </select>
           </Col>
-          <Col>
+          <Col xs={4}>
             <input name="numResults" type="number" value={this.state.numResults} onChange={this.handleInputChange}></input>
           </Col>
-          <Col>
+          <Col xs={4}>
             <input type="submit" value="Update" />
           </Col>
-        </form>
-      </Row>
+        </Row>
+      </form>
     )
   }
 
@@ -63,10 +62,10 @@ class StatPanel extends Component {
     return (
       <div key={item.id}>
         <Row>
-          <Col>
-            <img src={item.image} height="150" width="150" alt="art"/>
+          <Col xs={4}>
+            <img src={item.image} height="200" width="200" alt="art"/>
           </Col>
-          <Col>
+          <Col xs={8}>
             <p><font size = "24">{item.artist}</font></p>
             {this.state.itemType === "tracks" &&
               <p><i>{item.title}</i></p>
@@ -80,22 +79,12 @@ class StatPanel extends Component {
   render() {
     return (
       <div className="StatPanel">
-        {this.resultsForm()}
-        <table cellPadding="20">
-          <tbody>
-            {this.state.items.map(item =>
-              <tr key={item.id}>
-                <td style={{width: "150px"}}><img src={item.image} height="150" width="150" alt="art"/></td>
-                <td>
-                  <p><font size = "24">{item.artist}</font></p>
-                  {this.state.itemType === "tracks" &&
-                    <p><i>{item.title}</i></p>
-                  }
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+        <Container fluid={true}>
+          {this.resultsForm()}
+          {this.state.items.map(item =>
+            this.listEntry(item)
+          )}
+        </Container>
       </div>
     );
   }

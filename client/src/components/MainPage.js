@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container, Row, Col} from 'reactstrap';
 import Intro from './Intro';
 import StatPanel from './StatPanel';
 
@@ -19,4 +19,4 @@ class MainPage extends Component {
   }
 }
   
-  export default MainPage;
+export default MainPage;

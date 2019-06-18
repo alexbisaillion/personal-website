@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import MainPage from './components/MainPage';
 import * as serviceWorker from './serviceWorker';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(<MainPage />, document.getElementById('root'));
 
