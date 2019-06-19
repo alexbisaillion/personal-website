@@ -8,11 +8,18 @@ class MainPage extends Component {
     return (
       <Container fluid={true}>
         <Row>
-          <Col xs={12}><Intro /></Col>
-        </Row>
-        <Row>
-          <Col xs={6}><StatPanel itemType="tracks" /></Col>
-          <Col xs={6}><StatPanel itemType="artists" /></Col>
+          <Col xs={2}>
+            <p>Sidebar</p>
+          </Col>
+          <Col xs={10}>
+            <Row>
+              <Col xs={12}><Intro /></Col>
+            </Row>
+            <Row>
+              <Col xs={6}><StatPanel itemType="tracks" /></Col>
+              <Col xs={6}><StatPanel itemType="artists" /></Col>
+            </Row>
+          </Col>
         </Row>
       </Container>
     );

@@ -60,13 +60,13 @@ class StatPanel extends Component {
     )}
     */
     return (
-      <div key={item.id}>
-        <Row>
+      <div class="entry" key={item.id}>
+        <Row className="align-items-center border border-dark no-gutters">
           <Col xs={4}>
-            <img src={item.image} height="200" width="200" alt="art"/>
+            <img src={item.image} alt="art"/>
           </Col>
           <Col xs={8}>
-            <p><font size = "24">{item.artist}</font></p>
+            <h3>{item.artist}</h3>
             {this.state.itemType === "tracks" &&
               <p><i>{item.title}</i></p>
             }
