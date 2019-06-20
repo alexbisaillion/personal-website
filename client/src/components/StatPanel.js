@@ -54,11 +54,6 @@ class StatPanel extends Component {
   }
 
   listEntry(item) {
-    /*
-    {this.state.items.map(item =>
-      this.listEntry(item)
-    )}
-    */
     return (
       <div class="entry" key={item.id}>
         <Row className="align-items-center border border-dark no-gutters">
@@ -81,9 +76,11 @@ class StatPanel extends Component {
       <div className="StatPanel">
         <Container fluid={true}>
           {this.resultsForm()}
-          {this.state.items.map(item =>
-            this.listEntry(item)
-          )}
+          <div class="resultList">
+            {this.state.items.map(item =>
+              this.listEntry(item)
+            )}
+          </div>
         </Container>
       </div>
     );
