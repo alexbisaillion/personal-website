@@ -7,6 +7,8 @@ const ranges = {
   LONG_TERM: "long_term",
 }
 
+const seenLive = ["The Weeknd", "6LACK", "Belly", "Rae Sremmurd", "Kendrick Lamar", "DRAM", "YG", "ScHoolboy Q", "Jay Rock", "Ab-Soul", "SiR", "Lance Skiiiwalker", "Travis Scott", "Sheck Wes"];
+
 class StatPanel extends Component {
   constructor(props) {
     super(props);
@@ -53,6 +55,13 @@ class StatPanel extends Component {
   }
 
   listEntry(item) {
+    let formattedArtist;
+    if (seenLive.includes(item.artist)) {
+      formattedArtist = <h2 style={{color: "#56B5D9"}}>{item.artist}</h2>;
+    } else {
+      formattedArtist = <h2>{item.artist}</h2>;
+    }
+
     return (
       <div class="entry" key={item.id}>
         <Row className="align-items-center border border-dark no-gutters">
@@ -60,7 +69,7 @@ class StatPanel extends Component {
             <img src={item.image} alt="art"/>
           </Col>
           <Col xs={8}>
-            <h2>{item.artist}</h2>
+            {formattedArtist}
             {this.state.itemType === "tracks" &&
               <p><i>{item.title}</i></p>
             }

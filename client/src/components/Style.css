@@ -20,6 +20,9 @@ h2 {
 p {
   color: white
 }
+a {
+  color: #56B5D9 !important
+}
 /* Images in StatPanel */
 img {
   /*display: block;

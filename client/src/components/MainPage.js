@@ -10,7 +10,9 @@ class MainPage extends Component {
       <Container fluid={true}>
         <Row>
           <Col xs={2}>
-            <p>Sidebar</p>
+            <h2><a href="#">Education</a></h2>
+            <h2><a href="#">Projects</a></h2>
+            <h2><a href="#">Music</a></h2>
           </Col>
           <Col xs={10}>
             <Row>
