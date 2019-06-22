@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Container, Row, Col} from 'reactstrap';
-import './StatPanel.css';
 
 const ranges = {
   SHORT_TERM: "short_term",
@@ -36,17 +35,17 @@ class StatPanel extends Component {
       <form onSubmit={this.updateResults}>
         <Row>
           <Col xs={4}>
-            <select name="timeRange" value={this.state.timeRange} onChange={this.handleInputChange}>
+            <select class="form-control" name="timeRange" value={this.state.timeRange} onChange={this.handleInputChange}>
               <option value="short_term">Short Term</option>
               <option value="medium_term">Medium Term</option>
               <option value="long_term">Long Term</option>
             </select>
           </Col>
           <Col xs={4}>
-            <input name="numResults" type="number" value={this.state.numResults} onChange={this.handleInputChange}></input>
+            <input class="form-control" name="numResults" type="number" value={this.state.numResults} onChange={this.handleInputChange}></input>
           </Col>
           <Col xs={4}>
-            <input type="submit" value="Update" />
+            <input class="form-control" type="submit" value="Update"/>
           </Col>
         </Row>
       </form>
@@ -61,7 +60,7 @@ class StatPanel extends Component {
             <img src={item.image} alt="art"/>
           </Col>
           <Col xs={8}>
-            <h3>{item.artist}</h3>
+            <h2>{item.artist}</h2>
             {this.state.itemType === "tracks" &&
               <p><i>{item.title}</i></p>
             }

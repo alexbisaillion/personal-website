@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Container, Row, Col} from 'reactstrap';
 import Intro from './Intro';
 import StatPanel from './StatPanel';
+import './Style.css';
 
 class MainPage extends Component {
   render() {

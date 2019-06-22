@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Intro.css';
 import github from '../img/github.svg';
 import linkedin from '../img/linkedin.svg';
 import gmail from '../img/gmail.svg';

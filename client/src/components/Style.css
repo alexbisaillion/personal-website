@@ -1,0 +1,36 @@
+body {
+  background-color: black !important
+}
+select {
+  width: 100%;
+  height: 100%;
+  color: white !important;
+  background-color: black !important
+}
+input {
+  width: 100%;
+  color: white !important;
+  background-color: black !important
+}
+h2 {
+  color: white;
+  font-family: 'Kanit', sans-serif;
+  text-transform: uppercase
+}
+p {
+  color: white
+}
+/* Images in StatPanel */
+img {
+  /*display: block;
+  margin-left: auto;
+  margin-right: auto;  */
+  max-width: 100%;
+  max-height: 150px;
+  /*padding-top: 10px;
+  padding-bottom: 10px;*/
+}
+.resultList {
+  height: 800px;
+  overflow-y: scroll;
+}
