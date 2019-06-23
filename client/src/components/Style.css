@@ -5,20 +5,28 @@ select {
   width: 100%;
   height: 100%;
   color: white !important;
-  background-color: black !important
+  background-color: black !important;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 300 !important
 }
 input {
   width: 100%;
   color: white !important;
-  background-color: black !important
+  background-color: black !important;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 300 !important
 }
 h2 {
   color: white;
   font-family: 'Kanit', sans-serif;
+  font-weight: 600 !important;
   text-transform: uppercase
 }
 p {
-  color: white
+  color: white;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 300 !important;
+  font-size: 150%
 }
 a {
   color: #56B5D9 !important

@@ -35,19 +35,19 @@ class StatPanel extends Component {
   resultsForm() {
     return (
       <form onSubmit={this.updateResults}>
-        <Row>
-          <Col xs={4}>
-            <select class="form-control" name="timeRange" value={this.state.timeRange} onChange={this.handleInputChange}>
+        <Row className="mb-2">
+          <Col xs={5}>
+            <select className="form-control" name="timeRange" value={this.state.timeRange} onChange={this.handleInputChange}>
               <option value="short_term">Short Term</option>
               <option value="medium_term">Medium Term</option>
               <option value="long_term">Long Term</option>
             </select>
           </Col>
-          <Col xs={4}>
-            <input class="form-control" name="numResults" type="number" value={this.state.numResults} onChange={this.handleInputChange}></input>
+          <Col xs={2}>
+            <input className="form-control" name="numResults" type="number" value={this.state.numResults} onChange={this.handleInputChange}></input>
           </Col>
-          <Col xs={4}>
-            <input class="form-control" type="submit" value="Update"/>
+          <Col xs={5}>
+            <input className="form-control" type="submit" value="Update"/>
           </Col>
         </Row>
       </form>
@@ -63,8 +63,8 @@ class StatPanel extends Component {
     }
 
     return (
-      <div class="entry" key={item.id}>
-        <Row className="align-items-center border border-dark no-gutters">
+      <div className="entry" key={item.id}>
+        <Row className="align-items-center border border-white">
           <Col xs={4}>
             <img src={item.image} alt="art"/>
           </Col>
@@ -84,7 +84,7 @@ class StatPanel extends Component {
       <div className="StatPanel">
         <Container fluid={true}>
           {this.resultsForm()}
-          <div class="resultList">
+          <div className="resultList">
             {this.state.items.map(item =>
               this.listEntry(item)
             )}
