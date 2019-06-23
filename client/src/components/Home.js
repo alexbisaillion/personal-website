@@ -4,16 +4,11 @@ import Intro from './Intro';
 import StatPanel from './StatPanel';
 import './Style.css';
 
-class MainPage extends Component {
+class Home extends Component {
   render() {
     return (
       <Container fluid={true}>
         <Row>
-          <Col xs={2}>
-            <h2><a href="#">Education</a></h2>
-            <h2><a href="#">Projects</a></h2>
-            <h2><a href="#">Music</a></h2>
-          </Col>
           <Col xs={10}>
             <Row>
               <Col xs={12}><Intro /></Col>
@@ -29,4 +24,4 @@ class MainPage extends Component {
   }
 }
   
-export default MainPage;
+export default Home;
