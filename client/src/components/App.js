@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Container, Row, Col} from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
 import Home from './Home';
 import Music from './Music';
 import './Style.css';
@@ -20,13 +20,13 @@ class App extends Component {
   }
 
   render() {
+    console.log("rendering");
     return (
       <Container fluid={true}>
         <Row>
           <Col xs={2}>
-            <h2><a href="#">Education</a></h2>
-            <h2><a href="#">Projects</a></h2>
-            <h2><a href="#">Music</a></h2>
+            <Row><Button onClick={() => this.setState({ content : "home"})} color="black"><h2>Home</h2></Button></Row>
+            <Row><Button onClick={() => this.setState({ content : "music"})} color="black"><h2>Music</h2></Button></Row>
           </Col>
           <Col xs={10}>
             {this.getContent()}
