@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import Home from './Home';
 import Music from './Music';
 import './Style.css';
+import NavigationBar from './NavigationBar';
 
 class App extends Component {
   constructor(props) {
@@ -22,6 +23,8 @@ class App extends Component {
   render() {
     console.log("rendering");
     return (
+      <div>
+      <NavigationBar></NavigationBar>
       <Container fluid={true}>
         <Row>
           <Col xs={2}>
@@ -33,6 +36,7 @@ class App extends Component {
           </Col>
         </Row>
       </Container>
+      </div>
     )
   }
 }

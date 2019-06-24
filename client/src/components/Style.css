@@ -28,9 +28,6 @@ p {
   font-weight: 300 !important;
   font-size: 150%
 }
-a {
-  color: #56B5D9 !important
-}
 /* Images in StatPanel */
 img {
   /*display: block;
@@ -48,4 +45,13 @@ img {
 }
 .imageLink {
   filter: invert(1)
+}
+svg {
+  filter: invert(1)
+}
+.navbar-brand {
+  color: white !important;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 600 !important;
+  text-transform: uppercase
 }
