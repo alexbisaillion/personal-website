@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Home from './Home';
 import Music from './Music';
 import './Style.css';
@@ -21,24 +22,41 @@ class App extends Component {
   }
 
   render() {
-    console.log("rendering");
     return (
+     <Router>
       <div>
-      <NavigationBar></NavigationBar>
-      <Container fluid={true}>
-        <Row>
-          <Col xs={2}>
-            <Row><Button onClick={() => this.setState({ content : "home"})} color="black"><h2>Home</h2></Button></Row>
-            <Row><Button onClick={() => this.setState({ content : "music"})} color="black"><h2>Music</h2></Button></Row>
-          </Col>
-          <Col xs={10}>
-            {this.getContent()}
-          </Col>
-        </Row>
-      </Container>
+        <NavigationBar></NavigationBar>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/music/">Music</Link>
+          </li>
+        </ul>
+        <Container fluid={true}>
+          <Row>
+            <Col xs={12}>
+              <Route path="/" exact component={Home} />
+              <Route path="/home/" component={Home} />
+              <Route path="/music/" component={Music} />
+            </Col>
+          </Row>
+        </Container>
       </div>
+    </Router>
     )
   }
 }
-    
+function Index() {
+  return <h2>Home</h2>;
+}
+
+function About() {
+  return <h2>About</h2>;
+}
+
+function Users() {
+  return <h2>Users</h2>;
+}
   export default App;
