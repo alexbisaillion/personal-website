@@ -1,53 +1,53 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Button } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Home from './Home';
 import Music from './Music';
-import './Style.css';
-import NavigationBar from './NavigationBar';
+//import './Style.css';
+//import NavigationBar from './NavigationBar';
+import './NavigationBar.css'
+
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { content: props.content };
-    this.getContent = this.getContent.bind(this);
-  }
-
-  getContent() {
-    if (this.state.content === "home") {
-      return <Home></Home>;
-    } else if (this.state.content === "music") {
-      return <Music></Music>;
-    }
-  }
-
   render() {
     return (
-     <Router>
-      <div>
-        <NavigationBar></NavigationBar>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/music/">Music</Link>
-          </li>
-        </ul>
-        <Container fluid={true}>
-          <Row>
-            <Col xs={12}>
-              <Route path="/" exact component={Home} />
-              <Route path="/home/" component={Home} />
-              <Route path="/music/" component={Music} />
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    </Router>
+      <Router>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li>
+              <a href="https://github.com/alexbisaillion">
+                <svg width={25} height={25}>       
+                  <image xlinkHref="https://simpleicons.org/icons/github.svg" height={25} width={25}/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/alexbisaillion/">
+                <svg width={25} height={25}>       
+                  <image xlinkHref="https://simpleicons.org/icons/linkedin.svg" height={25} width={25}/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:a.bisaillion@gmail.com">
+                <svg width={25} height={25}>       
+                  <image xlinkHref="https://simpleicons.org/icons/gmail.svg" height={25} width={25}/>
+                </svg>
+              </a>
+            </li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about/">About</Link></li>
+          </ul>
+          <div id="content">
+            <Route path="/" exact component={Index} />
+            <Route path="/about/" component={About} />
+            <Route path="/users/" component={Users} />
+          </div>
+      </Router>
+      
     )
   }
 }
+
 function Index() {
   return <h2>Home</h2>;
 }
@@ -59,4 +59,5 @@ function About() {
 function Users() {
   return <h2>Users</h2>;
 }
-  export default App;
+
+export default App;

@@ -3,7 +3,7 @@ import { Row, Col } from 'reactstrap';
 import github from '../img/github.svg';
 import linkedin from '../img/linkedin.svg';
 import gmail from '../img/gmail.svg';
-import './Style.css';
+//import './Style.css';
 
 class Home extends Component {
   render() {
