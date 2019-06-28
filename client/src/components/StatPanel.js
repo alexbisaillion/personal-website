@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Container, Row, Col} from 'reactstrap';
+import './StatPanel.css'
 
 const ranges = {
   SHORT_TERM: "short_term",
@@ -63,33 +64,24 @@ class StatPanel extends Component {
     }
 
     return (
-      <div className="entry" key={item.id}>
-        <Row className="align-items-center border border-white">
-          <Col xs={4}>
-            <img src={item.image} alt="art"/>
-          </Col>
-          <Col xs={8}>
-            {formattedArtist}
-            {this.state.itemType === "tracks" &&
-              <p><i>{item.title}</i></p>
-            }
-          </Col>
-        </Row>
+      <div className="record-container" key={item.id}>
+        <img src={item.image} className="record-image" alt="art"/> 
+        <div className="record-info-container">
+          {formattedArtist}
+          {this.state.itemType === "tracks" &&
+            <p><i>{item.title}</i></p>
+          }
+        </div>
       </div>
     )
   }
 
   render() {
     return (
-      <div className="StatPanel">
-        <Container fluid={true}>
-          {this.resultsForm()}
-          <div className="resultList">
-            {this.state.items.map(item =>
-              this.listEntry(item)
-            )}
-          </div>
-        </Container>
+      <div className="stat-panel-container">
+        {this.state.items.map(item =>
+          this.listEntry(item)
+        )}
       </div>
     );
   }
