@@ -36,21 +36,15 @@ class StatPanel extends Component {
   resultsForm() {
     return (
       <form onSubmit={this.updateResults}>
-        <Row className="mb-2">
-          <Col xs={5}>
-            <select className="form-control" name="timeRange" value={this.state.timeRange} onChange={this.handleInputChange}>
-              <option value="short_term">Short Term</option>
-              <option value="medium_term">Medium Term</option>
-              <option value="long_term">Long Term</option>
-            </select>
-          </Col>
-          <Col xs={2}>
-            <input className="form-control" name="numResults" type="number" value={this.state.numResults} onChange={this.handleInputChange}></input>
-          </Col>
-          <Col xs={5}>
-            <input className="form-control" type="submit" value="Update"/>
-          </Col>
-        </Row>
+        <div className="results-form-container">
+          <select name="timeRange" value={this.state.timeRange} onChange={this.handleInputChange}>
+            <option value="short_term">Short Term</option>
+            <option value="medium_term">Medium Term</option>
+            <option value="long_term">Long Term</option>
+          </select>
+          <input name="numResults" type="number" value={this.state.numResults} onChange={this.handleInputChange}></input>
+          <input type="submit" value="Update"/>
+        </div>
       </form>
     )
   }
@@ -79,6 +73,7 @@ class StatPanel extends Component {
   render() {
     return (
       <div className="stat-panel-container">
+        {this.resultsForm()}
         {this.state.items.map(item =>
           this.listEntry(item)
         )}

@@ -31,3 +31,8 @@ p {
   font-family: 'Kanit', sans-serif;
   font-weight: 300;
 }
+
+.results-form-container {
+  display: flex;
+  flex-direction: row;
+}
