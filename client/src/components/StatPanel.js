@@ -42,7 +42,7 @@ class StatPanel extends Component {
             <option value="medium_term">Medium Term</option>
             <option value="long_term">Long Term</option>
           </select>
-          <input name="numResults" type="number" value={this.state.numResults} onChange={this.handleInputChange}></input>
+          <input name="numResults" type="number" value={this.state.numResults} onChange={this.handleInputChange} min="1" max="50"></input>
           <input type="submit" value="Update"/>
         </div>
       </form>

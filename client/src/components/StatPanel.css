@@ -1,6 +1,7 @@
 .stat-panel-container {
   display: flex;
   flex-direction: column;
+  margin: 5px;
 }
 
 .record-container {
@@ -12,27 +13,59 @@
 .record-info-container {
   display: flex;
   flex-direction: column;
+  margin-left: 15px;
 }
 
 .record-image {
+  /*
   max-width: 100%;
   max-height: 150px;
+  */
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+
 }
 
 h2 {
   color: white;
   font-family: 'Kanit', sans-serif;
   font-weight: 600;
-  text-transform: uppercase
+  text-transform: uppercase;
+  margin: 0px;
 }
 
 p {
   color: white;
   font-family: 'Kanit', sans-serif;
   font-weight: 300;
+  margin: 0px;
 }
 
 .results-form-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+input {
+  width: 30%;
+  color: white;
+  background-color: black;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 300;
+  border-style: solid;
+  border-width: medium;
+  border-color: white;
+}
+
+select {
+  width: 30%;
+  color: white;
+  background-color: black;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 300;
+  border-width: medium;
+  border-color: white;
 }
