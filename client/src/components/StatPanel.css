@@ -4,10 +4,18 @@
   margin: 5px;
 }
 
+.results-form-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
 .record-container {
   display: flex;
   flex-direction: row;
   align-items: center;
+  border-bottom: solid;
 }
 
 .record-info-container {
@@ -42,13 +50,6 @@ p {
   margin: 0px;
 }
 
-.results-form-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 15px;
-}
-
 input {
   width: 30%;
   color: white;
@@ -58,6 +59,7 @@ input {
   border-style: solid;
   border-width: medium;
   border-color: white;
+  padding: 10px;
 }
 
 select {
@@ -68,4 +70,9 @@ select {
   font-weight: 300;
   border-width: medium;
   border-color: white;
+  padding: 10px;
+}
+
+.results {
+  border-style: solid solid none solid;
 }

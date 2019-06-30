@@ -74,9 +74,11 @@ class StatPanel extends Component {
     return (
       <div className="stat-panel-container">
         {this.resultsForm()}
-        {this.state.items.map(item =>
-          this.listEntry(item)
-        )}
+        <div className="results">
+          {this.state.items.map(item =>
+            this.listEntry(item)
+          )}
+        </div>
       </div>
     );
   }
