@@ -6,42 +6,33 @@ var spotifyApi = new SpotifyWebApi({
     clientSecret: credentials.CLIENT_SECRET
 });
 
-function refreshCredentials() {
+async function refreshCredentials() {
     spotifyApi.setRefreshToken(credentials.REFRESH_TOKEN);
-    return spotifyApi.refreshAccessToken().then(function(data) {
-        spotifyApi.setAccessToken(data.body['access_token']);
-    });
+    const data = await spotifyApi.refreshAccessToken();
+    spotifyApi.setAccessToken(data.body['access_token']);
 }
 
 module.exports = {
-    getTopTracks: function (timeRange, numResults) {
-        return refreshCredentials().then(function() {
-            return spotifyApi.getMyTopTracks({time_range: timeRange, limit : numResults});
-        }).then(function(data) {
-            return createTopTracksResponse(data);
-        })
+    getTopTracks: async function (timeRange, numResults) {
+        await refreshCredentials();
+        const data = await spotifyApi.getMyTopTracks({ time_range: timeRange, limit: numResults });
+        return createTopTracksResponse(data);
     },
-    getTopArtists: function (timeRange, numResults) {
-        return refreshCredentials().then(function() {
-            return spotifyApi.getMyTopArtists({time_range: timeRange, limit : numResults});
-        }).then(function(data) {
-            return createTopArtistsResponse(data);
-        })
+    getTopArtists: async function (timeRange, numResults) {
+        await refreshCredentials();
+        const data = await spotifyApi.getMyTopArtists({ time_range: timeRange, limit: numResults });
+        return createTopArtistsResponse(data);
     },
-    getCurrentTrack: function () {
-        return refreshCredentials().then(function() {
-            return spotifyApi.getMyCurrentPlayingTrack();
-        }).then(function (data) {
-            return createCurrentTrackResponse(data);
-        });
+    getCurrentTrack: async function () {
+        await refreshCredentials();
+        const data = await spotifyApi.getMyCurrentPlayingTrack();
+        return createCurrentTrackResponse(data);
     },
-    getRecentTracks: function (numResults) {
-        return refreshCredentials().then(function() {
-            return spotifyApi.getMyRecentlyPlayedTracks({limit : numResults});
-        }).then(function (data) {
-            return createRecentTracksResponse(data);
-        });
-    }
+    getRecentTracks: async function (numResults) {
+        await refreshCredentials();
+        const data = await spotifyApi.getMyRecentlyPlayedTracks({ limit: numResults });
+        return createRecentTracksResponse(data);
+    },
 };
 
 function createTopTracksResponse(data) {
@@ -65,7 +56,6 @@ function createCurrentTrackResponse(data) {
 }
 
 function createRecentTracksResponse(data) {
-    console.log(data.body.items);
     var tracks = [];
     for (let i = 0; i < data.body.items.length; i++) {
         tracks.push({id : i, artist: data.body.items[i].track.artists[0].name, title: data.body.items[i].track.name, art: data.body.items[i].track.album.images[1].url});
