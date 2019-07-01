@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Home from './Home';
 import Music from './Music';
-//import './Style.css';
-//import NavigationBar from './NavigationBar';
-import './NavigationBar.css'
+import './App.css'
 import NavigationBar from './NavigationBar';
 
 
@@ -30,10 +28,6 @@ function Index() {
 
 function About() {
   return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
 }
 
 export default App;
