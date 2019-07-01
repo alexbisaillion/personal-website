@@ -28,7 +28,8 @@ router.get('/', function(req, res, next) {
         }
       )
     }
-  } else if (req.query.type === "type") {
+  } else if (req.query.type === "feed") {
+    console.log('making request');
     if (req.query.numResults) {
       statGenerator.getFeed(req.query.numResults).then(
         function (data) {
