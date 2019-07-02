@@ -2,3 +2,23 @@
   display: flex;
   flex-direction: row;
 }
+
+.current-track-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.current-track-info-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.live {
+  color: #56B5D9;
+}
+
+.offline {
+  color: #F0128A;
+}

@@ -13,24 +13,32 @@ class Radio extends Component {
       .then(res => this.setState({ currentTrack: res.currentTrack, recentTracks: res.recentTracks }));
   }
 
-  render() {
-    let loadedCurrentTrack;
-    if (this.state.currentTrack.art) {
-      loadedCurrentTrack = <div><img src={this.state.currentTrack.art} alt="art"/><h1>{this.state.currentTrack.artist} - <i>{this.state.currentTrack.track}</i></h1></div>
+  currentTrack() {
+    let status;
+    if (this.state.currentTrack.isPlaying) {
+      status = <h1 className="live">LIVE</h1>;
     } else {
-      loadedCurrentTrack = <h1>Loading!</h1>
+      status = <h1 className="offline">OFFLINE</h1>;
     }
+
+    return (
+      <div className="current-track-container">
+        <img src={this.state.currentTrack.art} alt="art"/>
+        <div className="current-track-info-container">
+          {status}
+          <div className="current-track-text">
+            <h2>{this.state.currentTrack.artist}</h2>
+            <p><i>{this.state.currentTrack.track}</i></p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  render() {
     return (
       <div className="radio-container">
-        {this.state.currentTrack.art ? (
-          <img src={this.state.currentTrack.art} alt="art"/>
-        ) : (
-          <h1>Loading!</h1>
-        )}
-
-        {this.state.currentTrack.artist && this.state.currentTrack.track &&
-          <h1>{this.state.currentTrack.artist} - <i>{this.state.currentTrack.track}</i></h1>
-        }
+        {this.currentTrack()}
       </div>
     );
   }
