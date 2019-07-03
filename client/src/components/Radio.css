@@ -1,18 +1,29 @@
 .radio-container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+  height: 400px;
 }
 
 .current-track-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.current-track-image {
+  height: 300px;
+  width: 300px;
 }
 
 .current-track-info-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+}
+
+.current-track-text {
+  margin-left: 15px;
 }
 
 .live {
@@ -21,4 +32,26 @@
 
 .offline {
   color: #F0128A;
+}
+
+.recent-track-container {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.recent-track {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.recent-track-image {
+  width: 75px;
+  height: 75px;
+}
+
+.recent-track-info {
+  margin-left: 15px;
 }

@@ -4,7 +4,7 @@ import './Radio.css'
 class Radio extends Component {
   constructor(props) {
     super(props);
-    this.state = {currentTrack: {}, recentTracks: [], numResults: 5 };
+    this.state = {currentTrack: {}, recentTracks: [], numResults: 10 };
   }
 
   componentDidMount() {
@@ -23,7 +23,7 @@ class Radio extends Component {
 
     return (
       <div className="current-track-container">
-        <img src={this.state.currentTrack.art} alt="art"/>
+        <img src={this.state.currentTrack.art} alt="art" className="current-track-image"/>
         <div className="current-track-info-container">
           {status}
           <div className="current-track-text">
@@ -32,13 +32,36 @@ class Radio extends Component {
           </div>
         </div>
       </div>
-    )
+    );
+  }
+
+  recentTracks() {
+    return (
+      <div className="recent-track-container">
+        {this.state.recentTracks.map(track =>
+          this.recentTrackEntry(track)
+        )}
+      </div>
+    );
+  }
+
+  recentTrackEntry(track) {
+    return (
+      <div className="recent-track">
+        <img src={track.art} alt="art" className="recent-track-image"/>
+        <div className="recent-track-info">
+          <h2>{track.artist}</h2>
+          <p>{track.title}</p>
+        </div>
+      </div>
+    );
   }
 
   render() {
     return (
       <div className="radio-container">
         {this.currentTrack()}
+        {this.recentTracks()}
       </div>
     );
   }
