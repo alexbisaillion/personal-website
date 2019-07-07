@@ -1,9 +1,4 @@
-.music-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 15px;
-}
-
-.radio {
-  grid-column: 1 / span 2;
+.scroll-area {
+  min-height: 100vh;
+  height: 100vh;
 }

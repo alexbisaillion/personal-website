@@ -58,7 +58,7 @@ function createTopArtistsResponse(data) {
 }
 
 function createCurrentTrackResponse(data) {
-  return ({artist: data.body.item.artists[0].name, track: data.body.item.name, album: data.body.item.album.name, art: data.body.item.album.images[1].url, isPlaying: data.body.is_playing})
+  return ({artist: data.body.item.artists[0].name, track: data.body.item.name, album: data.body.item.album.name, art: data.body.item.album.images[0].url, isPlaying: data.body.is_playing})
 }
 
 function createRecentTracksResponse(data) {

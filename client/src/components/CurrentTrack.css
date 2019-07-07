@@ -1,0 +1,43 @@
+.current-track-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+  align-items: center;
+  min-height: 100vh;
+  height: 100vh;
+}
+
+.current-track-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.current-track-artist {
+  color: white;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 4em;
+}
+
+.current-track-title {
+  color: white;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 300;
+  font-size: 2em;
+  font-style: italic;
+}
+
+.current-track-image {
+  height: 600px;
+  width: 600px;
+}
+
+.live {
+  color: #56B5D9;
+}
+
+.offline {
+  color: #F0128A;
+}

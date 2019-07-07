@@ -5,35 +5,6 @@
   height: 400px;
 }
 
-.current-track-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.current-track-image {
-  height: 300px;
-  width: 300px;
-}
-
-.current-track-info-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.current-track-text {
-  margin-left: 15px;
-}
-
-.live {
-  color: #56B5D9;
-}
-
-.offline {
-  color: #F0128A;
-}
-
 .recent-track-container {
   display: flex;
   flex-direction: column;

@@ -41,7 +41,17 @@ router.get('/', function(req, res, next) {
         }
       )
     }
-  }
+  } else if (req.query.type === "currentTrack") {
+    statGenerator.getCurrentTrack().then(
+      function (data) {
+        console.log("Completed successfully.");
+        res.json(data);
+      },
+      function (err) {
+        console.log("Something went wrong!", err);
+      }
+    )
+  } 
 });
 
 module.exports = router;
