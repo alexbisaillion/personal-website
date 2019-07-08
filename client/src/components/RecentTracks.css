@@ -36,3 +36,8 @@
   margin-left: 15px;
   align-items: center;
 }
+
+.playedAt {
+  margin-left: auto;
+  margin-right: 15px;
+}

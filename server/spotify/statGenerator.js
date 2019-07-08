@@ -64,11 +64,10 @@ function createCurrentTrackResponse(data) {
 function createRecentTracksResponse(data) {
   let tracks = [];
   for (let i = 0; i < data.body.items.length; i++) {
-    tracks.push({id : i, artist: data.body.items[i].track.artists[0].name, title: data.body.items[i].track.name, art: data.body.items[i].track.album.images[1].url});
+    tracks.push({id : i, artist: data.body.items[i].track.artists[0].name, title: data.body.items[i].track.name, art: data.body.items[i].track.album.images[1].url, date: data.body.items[i].played_at});
   }
   return tracks;
 }
-
 
 function createFeedResponse(recentTracks, currentTrack) {
   return { recentTracks: createRecentTracksResponse(recentTracks), currentTrack: createCurrentTrackResponse(currentTrack) }

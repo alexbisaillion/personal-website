@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import './RecentTracks.css'
 
 class RecentTracks extends Component {
@@ -31,6 +32,7 @@ class RecentTracks extends Component {
           <h2>{track.artist}</h2>
           <p>{track.title}</p>
         </div>
+        <p className="playedAt">{moment(new Date(track.date)).fromNow()}</p>
       </div>
     );
   }
