@@ -71,12 +71,15 @@ class StatPanel extends Component {
 
   render() {
     return (
-      <div className="stat-panel-container">
-        {this.resultsForm()}
-        <div className="results">
-          {this.state.items.map(item =>
-            this.listEntry(item)
-          )}
+      <div className="stat-section-container">
+        <div></div>
+        <div className="stat-panel-container">
+          {this.resultsForm()}
+          <div className="results">
+            {this.state.items.map(item =>
+              this.listEntry(item)
+            )}
+          </div>
         </div>
       </div>
     );

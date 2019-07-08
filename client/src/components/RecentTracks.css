@@ -1,17 +1,21 @@
-.radio-container {
+.recent-tracks-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 15px;
-  height: 400px;
+  align-items: center;
+  min-height: 100vh;
+  height: 100vh;
 }
 
-.recent-track-container {
+.recent-track-list-container {
   display: flex;
   flex-direction: column;
+  height: 75%;
   overflow: scroll;
   overflow-x: hidden;
   border-style: none none solid none;
   border-color: #535353;
+  margin: 15px;
 }
 
 .recent-track {

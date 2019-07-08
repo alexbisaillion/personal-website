@@ -51,6 +51,18 @@ router.get('/', function(req, res, next) {
         console.log("Something went wrong!", err);
       }
     )
+  } else if (req.query.type === "recentTracks") {
+    if (req.query.numResults) {
+      statGenerator.getRecentTracks(req.query.numResults).then(
+        function (data) {
+          console.log("Completed successfully.");
+          res.json(data);
+        },
+        function (err) {
+          console.log("Something went wrong!", err);
+        }
+      )
+    }
   } 
 });
 
