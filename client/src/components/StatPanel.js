@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import List from './List';
+import ListEntry from './ListEntry';
 import './StatPanel.css'
 
 const ranges = {
@@ -6,8 +8,6 @@ const ranges = {
   MEDIUM_TERM: "medium_term",
   LONG_TERM: "long_term",
 }
-
-const seenLive = ["The Weeknd", "6LACK", "Belly", "Rae Sremmurd", "Kendrick Lamar", "DRAM", "YG", "ScHoolboy Q", "Jay Rock", "Ab-Soul", "SiR", "Lance Skiiiwalker", "Travis Scott", "Sheck Wes"];
 
 class StatPanel extends Component {
   constructor(props) {
@@ -48,39 +48,15 @@ class StatPanel extends Component {
     )
   }
 
-  listEntry(item) {
-    let formattedArtist;
-    if (seenLive.includes(item.artist)) {
-      formattedArtist = <h2 style={{color: "#56B5D9"}}>{item.artist}</h2>;
-    } else {
-      formattedArtist = <h2>{item.artist}</h2>;
-    }
-
-    return (
-      <div className="record-container" key={item.id}>
-        <img src={item.image} className="record-image" alt="art"/> 
-        <div className="record-info-container">
-          {formattedArtist}
-          {this.state.itemType === "tracks" &&
-            <p><i>{item.title}</i></p>
-          }
-        </div>
-      </div>
-    )
-  }
-
   render() {
     return (
       <div className="stat-section-container">
-        <div></div>
-        <div className="stat-panel-container">
-          {this.resultsForm()}
-          <div className="results">
-            {this.state.items.map(item =>
-              this.listEntry(item)
-            )}
-          </div>
-        </div>
+        <div>{this.resultsForm()}</div>
+        <List>
+          {this.state.items.map(item =>
+            <ListEntry art={item.image} artist={item.artist} track={item.title} key={item.id}></ListEntry>
+          )}
+        </List>
       </div>
     );
   }

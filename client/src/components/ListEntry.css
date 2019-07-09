@@ -1,0 +1,53 @@
+.list-entry-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-style: solid none none none;
+  border-color: #535353;
+}
+
+.list-entry-image {
+  object-fit: cover;
+  width: 75px;
+  height: 75px;
+  margin: 15px;
+}
+
+.list-entry-info-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.list-entry-artist {
+  color: white;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1.5em;
+}
+
+.list-entry-artist-live {
+  color: #56B5D9;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1.5em;
+}
+
+.list-entry-track {
+  color: white;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 300;
+  font-size: 1em;
+  font-style: italic;
+}
+
+.list-entry-timestamp {
+  margin-left: auto;
+  margin-right: 15px;
+  color: white;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 300;
+  font-size: 1em;
+}

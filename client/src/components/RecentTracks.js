@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import moment from 'moment';
 import './RecentTracks.css'
+import List from './List';
+import ListEntry from './ListEntry';
 
 class RecentTracks extends Component {
   constructor(props) {
     super(props);
-    this.state = {recentTracks: [], numResults: 10 };
+    this.state = {recentTracks: [], numResults: 50 };
   }
 
   componentDidMount() {
@@ -14,34 +15,15 @@ class RecentTracks extends Component {
       .then(res => this.setState({ recentTracks: res }));
   }
 
-  recentTracks() {
-    return (
-      <div className="recent-track-list-container">
-        {this.state.recentTracks.map(track =>
-          this.recentTrackEntry(track)
-        )}
-      </div>
-    );
-  }
-
-  recentTrackEntry(track) {
-    return (
-      <div className="recent-track">
-        <img src={track.art} alt="art" className="recent-track-image"/>
-        <div className="recent-track-info">
-          <h2>{track.artist}</h2>
-          <p>{track.title}</p>
-        </div>
-        <p className="playedAt">{moment(new Date(track.date)).fromNow()}</p>
-      </div>
-    );
-  }
-
   render() {
     return (
       <div className="recent-tracks-container">
         <div></div>
-        {this.recentTracks()}
+        <List>
+          {this.state.recentTracks.map(track =>
+            <ListEntry art={track.art} artist={track.artist} track={track.title} timestamp={track.date} key={track.id}></ListEntry>
+          )}
+        </List>
       </div>
     );
   }
