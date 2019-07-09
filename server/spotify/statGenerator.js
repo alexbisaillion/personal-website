@@ -25,8 +25,15 @@ module.exports = {
   },
   getCurrentTrack: async function () {
     await refreshCredentials();
-    const data = await spotifyApi.getMyCurrentPlayingTrack();
-    return createCurrentTrackResponse(data);
+    let data = await spotifyApi.getMyCurrentPlayingTrack();
+    if (data.statusCode === 204) {
+      console.log("good");
+      data = await spotifyApi.getMyRecentlyPlayedTracks({ limit: 1 });
+      console.log(data);
+      return createLastTrackResponse(data);
+    } else {
+      return createCurrentTrackResponse(data);
+    }
   },
   getRecentTracks: async function (numResults) {
     await refreshCredentials();
@@ -59,6 +66,10 @@ function createTopArtistsResponse(data) {
 
 function createCurrentTrackResponse(data) {
   return ({artist: data.body.item.artists[0].name, track: data.body.item.name, album: data.body.item.album.name, art: data.body.item.album.images[0].url, isPlaying: data.body.is_playing})
+}
+
+function createLastTrackResponse(data) {
+  return ({artist: data.body.items[0].track.artists[0].name, track: data.body.items[0].track.name, art: data.body.items[0].track.album.images[0].url, isPlaying: false});
 }
 
 function createRecentTracksResponse(data) {
