@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
+import * as Vibrant from 'node-vibrant'
 import './CurrentTrack.css'
 
 class CurrentTrack extends Component {
   constructor(props) {
     super(props);
-    this.state = {currentTrack: {} };
+    this.state = {currentTrack: {}, dominantColour: "black" };
   }
 
-  componentDidMount() {
-    fetch(`/stats?type=currentTrack`)
-      .then(res => res.json())
-      .then(res => this.setState({ currentTrack: res }));
+  async componentDidMount() {
+    const currentTrack = await fetch(`/stats?type=currentTrack`);
+    const currentTrackJSON = await currentTrack.json();
+    const colour = await Vibrant.from(currentTrackJSON.art).getPalette();
+    this.setState({ currentTrack: currentTrackJSON, dominantColour: colour.Vibrant.hex});
   }
 
   currentTrack() {
@@ -21,8 +23,10 @@ class CurrentTrack extends Component {
       status = <h1 className="offline">OFFLINE</h1>;
     }
 
+    let gradient = `linear-gradient(to right, black, black, ${this.state.dominantColour})`;
+
     return (
-      <div className="current-track-container">
+      <div className="current-track-container" style={{background: gradient}}>
         <div className="current-track-info-container">
           <div className="current-track-artist">{this.state.currentTrack.artist}</div>
           <div className="current-track-title">{this.state.currentTrack.track}</div>
