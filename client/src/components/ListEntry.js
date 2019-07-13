@@ -28,7 +28,7 @@ class ListEntry extends Component {
     let gradient = `linear-gradient(to right, ${this.state.dominantColour}, black, black, black, black)`;
 
     return (
-      <div className="list-entry-container" style={{background: gradient}}>
+      <div className="list-entry-container">
         <img src={this.props.art} alt="art" className="list-entry-image"/>
         <div className="list-entry-info-container">
           {formattedArtist}
