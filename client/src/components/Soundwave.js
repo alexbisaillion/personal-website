@@ -4,7 +4,7 @@ import './Soundwave.css'
 class Soundwave extends Component {
   render() {
     let bars = [];
-    let numBars = Math.floor(this.props.infoWidth / 35);
+    let numBars = Math.ceil(this.props.infoWidth / 35);
     for (let i = 0; i < numBars; i++) {
       bars.push(<div className='bar' style={{background: this.props.colour, animationDuration: `${getRandomInt(600, 700)}ms`}}></div>);
     }

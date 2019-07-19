@@ -14,11 +14,18 @@ class CurrentTrack extends Component {
     const currentTrack = await fetch(`/stats?type=currentTrack`);
     const currentTrackJSON = await currentTrack.json();
     const colour = await Vibrant.from(currentTrackJSON.art).getPalette();
-    this.setState({ currentTrack: currentTrackJSON, dominantColour: colour.Vibrant.hex, infoWidth: this.info.current.offsetWidth});
+    let maxColour = colour.Vibrant.hex;
+    let maxPopulation = colour.Vibrant.population;
+    Object.keys(colour).forEach(function(key) {
+      if (colour[key].population > maxPopulation) {
+        maxColour = colour[key].hex;
+      }
+    });
+    this.setState({ currentTrack: currentTrackJSON, dominantColour: maxColour, infoWidth: this.info.current.offsetWidth});
   }
 
   render() {
-    let gradient = `linear-gradient(to right, black, black, ${this.state.dominantColour})`;
+    let gradient = `radial-gradient(circle at top right, ${this.state.dominantColour}, black, black)`
     return (
       <div className="current-track-container" style={{background: gradient}}>
         <div className="current-track-info-container" ref={this.info}>
