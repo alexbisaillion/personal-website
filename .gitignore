@@ -2,3 +2,4 @@
 /server/node_modules/*
 /client/package-lock.json
 /server/routes/test.js
+/server/package-lock.json
