@@ -4,14 +4,18 @@
   height: 20%;
   width: 50%;
   align-items: flex-end;
-  position: absolute;
-  bottom: 0;
+  justify-content: flex-end;
 }
 
 .bar {
   height: 5%;
   width: 25px;      
-  animation: sound 0ms -800ms linear infinite alternate;
+  animation-duration: 0ms;
+  animation-timing-function: linear;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-name: sound;
   margin-left: 5px;
   margin-right: 5px;
 }

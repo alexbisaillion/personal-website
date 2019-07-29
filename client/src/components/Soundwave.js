@@ -6,7 +6,11 @@ class Soundwave extends Component {
     let bars = [];
     let numBars = Math.ceil(this.props.infoWidth / 35);
     for (let i = 0; i < numBars; i++) {
-      bars.push(<div className='bar' style={{background: this.props.colour, animationDuration: `${getRandomInt(600, 700)}ms`}}></div>);
+      if (this.props.isPlaying) {
+        bars.push(<div className='bar' style={{background: this.props.colour, animationDuration: `${getRandomInt(600, 700)}ms`}}></div>);
+      } else {
+        bars.push(<div className='bar' style={{background: this.props.colour}}></div>);
+      }
     }
     return (
       <div id='bars'>

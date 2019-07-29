@@ -1,37 +1,56 @@
 import React, { Component } from 'react';
-import * as Vibrant from 'node-vibrant'
 import './CurrentTrack.css'
 import Soundwave from './Soundwave';
+import refresh from '../img/refresh.svg'
+import moment from 'moment';
 
 class CurrentTrack extends Component {
   constructor(props) {
     super(props);
-    this.state = {currentTrack: {}, dominantColour: "black", infoWidth: 0 };
+    this.state = { currentTrack: {}, infoWidth: 0, isLoading: true };
     this.info = React.createRef();
+    this.fetchResults = this.fetchResults.bind(this);
   }
 
-  async componentDidMount() {
-    const currentTrack = await fetch(`/stats?type=currentTrack`);
-    const currentTrackJSON = await currentTrack.json();
-    const colour = await Vibrant.from(currentTrackJSON.art).getPalette();
-    let maxColour = colour.Vibrant.hex;
-    let maxPopulation = colour.Vibrant.population;
-    Object.keys(colour).forEach(function(key) {
-      if (colour[key].population > maxPopulation) {
-        maxColour = colour[key].hex;
-      }
-    });
-    this.setState({ currentTrack: currentTrackJSON, dominantColour: maxColour, infoWidth: this.info.current.offsetWidth});
+  componentDidMount() {
+    this.fetchResults();
+  }
+
+  fetchResults() {
+    fetch(`/stats?type=currentTrack`)
+      .then(res => res.json())
+      .then(currentTrack => this.setState({ currentTrack: currentTrack, infoWidth: this.info.current.offsetWidth, isLoading: false}));
   }
 
   render() {
-    let gradient = `radial-gradient(circle at top right, ${this.state.dominantColour}, black, black)`
+    if (this.state.isLoading) {
+      return (
+        <div className="current-track-container" ref={this.info}>
+          <div className="current-track-loading">
+            <div className="spinner"></div>
+          </div>
+        </div>
+      )
+    }
+    let gradient = `radial-gradient(circle at top right, ${this.state.currentTrack.colour}, black, black)`
+    let status;
+    if (this.state.currentTrack.isPlaying) {
+      status = <span>Now Playing</span>
+    } else if (this.state.currentTrack.date) {
+      status = <div className="offline-status"><span>Offline</span><span>{moment(new Date(this.state.currentTrack.date)).fromNow()}</span></div>
+    } else {
+      status = <span>Offline</span>
+    }
     return (
-      <div className="current-track-container" style={{background: gradient}}>
-        <div className="current-track-info-container" ref={this.info}>
-          <div className="current-track-artist">{this.state.currentTrack.artist}</div>
-          <div className="current-track-title">{this.state.currentTrack.track}</div>
-          <Soundwave colour={this.state.dominantColour} infoWidth={this.state.infoWidth * 0.5}></Soundwave>
+      <div className="current-track-container" style={{background: gradient}} ref={this.info}>
+        <div className="current-track-info-container">
+          <span className="current-track-artist">{this.state.currentTrack.artist}</span>
+          <span className="current-track-title">{this.state.currentTrack.track}</span>
+          <div className="current-track-status">
+            <img className="refresh" src={refresh} onClick={() => this.fetchResults()}></img>
+            {status}
+          </div>
+          <Soundwave colour={this.state.currentTrack.colour} infoWidth={this.state.infoWidth * 0.25} isPlaying={this.state.currentTrack.isPlaying}></Soundwave>
         </div>
         <img src={this.state.currentTrack.art} alt="art" className="current-track-image"/>
       </div>

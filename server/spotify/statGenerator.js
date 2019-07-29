@@ -1,5 +1,6 @@
 let SpotifyWebApi = require('spotify-web-api-node');
 let credentials = require('../spotify/credentials');
+let vibrant = require('node-vibrant');
 
 let spotifyApi = new SpotifyWebApi({
   clientId: credentials.CLIENT_ID,
@@ -26,14 +27,24 @@ module.exports = {
   getCurrentTrack: async function () {
     await refreshCredentials();
     let data = await spotifyApi.getMyCurrentPlayingTrack();
+    let parsedData;
     if (data.statusCode === 204) {
-      console.log("good");
       data = await spotifyApi.getMyRecentlyPlayedTracks({ limit: 1 });
-      console.log(data);
-      return createLastTrackResponse(data);
+      parsedData = createLastTrackResponse(data);
     } else {
-      return createCurrentTrackResponse(data);
+      parsedData = createCurrentTrackResponse(data);
     }
+    const colour = await vibrant.from(parsedData.art).getPalette();
+    //let maxColour = colour.Vibrant.population > colour.Muted.population ? colour.Vibrant.hex : colour.Muted.hex;
+    let maxColour = colour.Vibrant.hex;
+    let maxPopulation = colour.Vibrant.population;
+    Object.keys(colour).forEach(function(key) {
+      if (colour[key].population > maxPopulation) {
+        maxColour = colour[key].hex;
+      }
+    });
+    parsedData.colour = maxColour;
+    return parsedData;
   },
   getRecentTracks: async function (numResults) {
     await refreshCredentials();
@@ -58,18 +69,30 @@ function createTopTracksResponse(data) {
 
 function createTopArtistsResponse(data) {
   let artists = [];
+  let genres = {};
   for (let i = 0; i < data.body.items.length; i++) {
     artists.push({id : i, artist: data.body.items[i].name, image: data.body.items[i].images[1].url});
+    for (let j = 0; j < data.body.items[i].genres.length; j++) {
+      let genre = data.body.items[i].genres[j];
+      genres[genre] = genres[genre] ? genres[genre] + 1 : 1;
+    }
   }
+
+  let genresSorted = Object.keys(genres).sort(
+    function(a,b) {
+      return genres[b] - genres[a];
+    }
+  )
+  console.log(genresSorted.slice(0, 5));
   return artists;
 }
 
 function createCurrentTrackResponse(data) {
-  return ({artist: data.body.item.artists[0].name, track: data.body.item.name, album: data.body.item.album.name, art: data.body.item.album.images[0].url, isPlaying: data.body.is_playing})
+  return ({artist: data.body.item.artists[0].name, track: data.body.item.name, album: data.body.item.album.name, art: data.body.item.album.images[0].url, isPlaying: data.body.is_playing, date: data.body.timestamp})
 }
 
 function createLastTrackResponse(data) {
-  return ({artist: data.body.items[0].track.artists[0].name, track: data.body.items[0].track.name, art: data.body.items[0].track.album.images[0].url, isPlaying: false});
+  return ({artist: data.body.items[0].track.artists[0].name, track: data.body.items[0].track.name, art: data.body.items[0].track.album.images[0].url, date: data.body.items[0].played_at});
 }
 
 function createRecentTracksResponse(data) {

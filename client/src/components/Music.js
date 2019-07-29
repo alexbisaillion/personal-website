@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import StatPanel from './StatPanel';
-import './Music.css'
 import CurrentTrack from './CurrentTrack';
 import RecentTracks from './RecentTracks';
 
