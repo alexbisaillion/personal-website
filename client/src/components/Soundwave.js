@@ -7,9 +7,9 @@ class Soundwave extends Component {
     let numBars = Math.ceil(this.props.infoWidth / 35);
     for (let i = 0; i < numBars; i++) {
       if (this.props.isPlaying) {
-        bars.push(<div className='bar' style={{background: this.props.colour, animationDuration: `${getRandomInt(600, 700)}ms`}}></div>);
+        bars.push(<div className='bar' style={{background: this.props.colour, animationDuration: `${getRandomInt(600, 700)}ms`}} key={i}></div>);
       } else {
-        bars.push(<div className='bar' style={{background: this.props.colour}}></div>);
+        bars.push(<div className='bar' style={{background: this.props.colour}} key={i}></div>);
       }
     }
     return (

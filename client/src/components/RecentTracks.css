@@ -8,3 +8,25 @@
   margin-left: 15px;
   margin-right: 15px;
 }
+
+.recent-tracks-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: space-evenly;
+}
+
+.recent-tracks-info-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.recent-tracks-info-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+}

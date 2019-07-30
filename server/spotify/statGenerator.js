@@ -97,10 +97,30 @@ function createLastTrackResponse(data) {
 
 function createRecentTracksResponse(data) {
   let tracks = [];
+  let artists = {};
+  let years = {};
+  console.log(data.body.items[0]);
   for (let i = 0; i < data.body.items.length; i++) {
-    tracks.push({id : i, artist: data.body.items[i].track.artists[0].name, title: data.body.items[i].track.name, art: data.body.items[i].track.album.images[1].url, date: data.body.items[i].played_at});
+    let currentArtist = data.body.items[i].track.artists[0].name;
+    let currentYear = new Date(data.body.items[i].track.album.release_date);
+    tracks.push({id : i, artist: currentArtist, title: data.body.items[i].track.name, art: data.body.items[i].track.album.images[1].url, date: data.body.items[i].played_at});
+    artists[currentArtist] = artists[currentArtist] ? artists[currentArtist] + 1 : 1;
+    years[currentYear.getFullYear()] = years[currentYear.getFullYear()] ? years[currentYear.getFullYear()] + 1 : 1;
+
   }
-  return tracks;
+  let artistsSorted = Object.keys(artists).sort(
+    function(a,b) {
+      return artists[b] - artists[a];
+    }
+  )
+  let yearsSorted = Object.keys(years).sort(
+    function(a,b) {
+      return years[b] - years[a];
+    }
+  )
+  console.log(artistsSorted.slice(0, 5));
+  console.log(yearsSorted.slice(0, 5));
+  return ({tracks: tracks, topArtists: artistsSorted.slice(0, 5), topYears: yearsSorted.slice(0, 5)})
 }
 
 function createFeedResponse(recentTracks, currentTrack) {
