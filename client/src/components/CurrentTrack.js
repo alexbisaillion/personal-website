@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './CurrentTrack.css'
 import Soundwave from './Soundwave';
+import LoadingIcon from './LoadingIcon';
 import refresh from '../img/refresh.svg'
 import moment from 'moment';
 
@@ -27,7 +28,7 @@ class CurrentTrack extends Component {
       return (
         <div className="current-track-container" ref={this.info}>
           <div className="current-track-loading">
-            <div className="spinner"></div>
+            <LoadingIcon height="100px" width="100px"></LoadingIcon>
           </div>
         </div>
       )

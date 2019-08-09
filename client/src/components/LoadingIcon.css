@@ -1,0 +1,12 @@
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+ 
+.spinner {
+  align-self: center;
+  justify-self: center;
+  border-radius: 50%;
+  border: 5px solid white;
+  border-top-color: #000;
+  animation: spinner .6s linear infinite;
+}

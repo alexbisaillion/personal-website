@@ -7,8 +7,8 @@
 
 .current-track-loading {
   grid-column: 1 / span 2;
-  align-self: center;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .current-track-info-container {
@@ -28,6 +28,7 @@
   font-weight: 600;
   font-size: 4vw;
   text-transform: uppercase;
+  text-align: right;
 }
 
 .current-track-title {
@@ -37,6 +38,7 @@
   font-size: 2vw;
   font-style: italic;
   margin-bottom: 2em;
+  text-align: right;
 }
 
 .current-track-image {
@@ -72,22 +74,3 @@
   width: 50px;
 }
 
-@keyframes spinner {
-  to {transform: rotate(360deg);}
-}
- 
-.spinner:before {
-  content: '';
-  box-sizing: border-box;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60px;
-  height: 60px;
-  margin-top: -30px;
-  margin-left: -30px;
-  border-radius: 50%;
-  border: 2px solid #ccc;
-  border-top-color: #000;
-  animation: spinner .6s linear infinite;
-}
