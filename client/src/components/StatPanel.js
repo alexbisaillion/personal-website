@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import List from './List';
 import ListEntry from './ListEntry';
+import LoadingIcon from './LoadingIcon';
 import './StatPanel.css'
 
 const ranges = {
@@ -12,7 +13,7 @@ const ranges = {
 class StatPanel extends Component {
   constructor(props) {
     super(props);
-    this.state = {items: [], numResults: 50, timeRange: ranges.SHORT_TERM, itemType: props.itemType};
+    this.state = {items: [], numResults: 50, timeRange: ranges.SHORT_TERM, itemType: props.itemType, isLoading: true};
     this.handleInputChange = this.handleInputChange.bind(this);
     this.updateResults = this.updateResults.bind(this);
   }
@@ -20,7 +21,7 @@ class StatPanel extends Component {
   componentDidMount() {
     fetch(`/stats?type=${this.state.itemType}&timeRange=${this.state.timeRange}&numResults=${this.state.numResults}`)
       .then(res => res.json())
-      .then(items => this.setState({ items }));
+      .then(items => this.setState({ items: items, isLoading: false }));
   }
 
   updateResults(event) {
@@ -49,6 +50,15 @@ class StatPanel extends Component {
   }
 
   render() {
+    if (this.state.isLoading) {
+      return (
+        <div className="stat-section-container" ref={this.info}>
+          <div className="stat-panel-loading">
+            <LoadingIcon height="100px" width="100px"></LoadingIcon>
+          </div>
+        </div>
+      )
+    }
     return (
       <div className="stat-section-container">
         <div>{this.resultsForm()}</div>

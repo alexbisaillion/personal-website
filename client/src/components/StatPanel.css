@@ -38,3 +38,9 @@ select {
   border-color: #535353;
   padding: 10px;
 }
+
+.stat-panel-loading {
+  grid-column: 1 / span 2;
+  display: flex;
+  justify-content: center;
+}

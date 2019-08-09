@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './RecentTracks.css'
 import List from './List';
 import ListEntry from './ListEntry';
+import LoadingIcon from './LoadingIcon';
 
 class RecentTracks extends Component {
   constructor(props) {
@@ -16,25 +17,30 @@ class RecentTracks extends Component {
   }
 
   render() {
+    if (this.state.isLoading) {
+      return (
+        <div className="recent-tracks-container" ref={this.info}>
+          <div className="recent-tracks-loading">
+            <LoadingIcon height="100px" width="100px"></LoadingIcon>
+          </div>
+        </div>
+      )
+    }
     return (
       <div className="recent-tracks-container">
         <div className="recent-tracks-info-container">
-          <span>Recent Tracks</span>
-          <div className="recent-tracks-info-section">
-            <span>Trending Artists</span>
-            <div className="recent-tracks-info-list">
-              {this.state.topArtists.map(artist =>
-                <span key={artist}>{artist}</span>
-              )}
-            </div>
+          <span className="recent-track-stat-header">Recent Tracks</span>
+          <span className="recent-track-section-header">Trending Artists</span>
+          <div className="recent-tracks-info-list">
+            {this.state.topArtists.map(artist =>
+              <span key={artist}>{artist}</span>
+            )}
           </div>
-          <div className="recent-tracks-info-section">
-            <span>Trending Years</span>
-            <div className="recent-tracks-info-list">
-              {this.state.topYears.map(year =>
-                <span key={year}>{year}</span>
-              )}
-            </div>
+          <span className="recent-track-section-header">Trending Years</span>
+          <div className="recent-tracks-info-list">
+            {this.state.topYears.map(year =>
+              <span key={year}>{year}</span>
+            )}
           </div>
         </div>
         <List>
