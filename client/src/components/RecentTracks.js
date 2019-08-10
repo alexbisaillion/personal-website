@@ -28,7 +28,21 @@ class RecentTracks extends Component {
     }
     return (
       <div className="recent-tracks-container">
-        <span className="recent-track-stat-header">Recent Tracks</span>
+        <div className="recent-tracks-info-container">
+          <span className="recent-track-stat-header">Recent Tracks</span>
+          <span className="recent-track-section-header">Trending Artists</span>
+          <div className="recent-tracks-info-list">
+            {this.state.topArtists.map(artist =>
+              <span key={artist}>{artist}</span>
+            )}
+          </div>
+          <span className="recent-track-section-header">Trending Years</span>
+          <div className="recent-tracks-info-list">
+            {this.state.topYears.map(year =>
+              <span key={year}>{year}</span>
+            )}
+          </div>
+        </div>
         <List>
           {this.state.recentTracks.map(track =>
             <ListEntry art={track.art} artist={track.artist} track={track.title} timestamp={track.date} key={track.id}></ListEntry>
