@@ -61,29 +61,51 @@ module.exports = {
 
 function createTopTracksResponse(data) {
   let tracks = [];
+  let years = {};
+  let albums = {}
   for (let i = 0; i < data.body.items.length; i++) {
     tracks.push({id : i, artist: data.body.items[i].artists[0].name, image: data.body.items[i].album.images[1].url, title: data.body.items[i].name});
+    let currentYear = new Date(data.body.items[i].album.release_date);
+    let currentAlbum = data.body.items[i].artists[0].name + "|" + data.body.items[i].album.name + "|" + data.body.items[i].album.images[1].url;
+    years[currentYear.getFullYear()] = years[currentYear.getFullYear()] ? years[currentYear.getFullYear()] + 1 : 1;
+    albums[currentAlbum] = albums[currentAlbum] ? albums[currentAlbum] + 1 : 1;
   }
+  let yearsSorted = Object.keys(years).sort(
+    function(a,b) {
+      return years[b] - years[a];
+    }
+  )
+  let albumsSorted = Object.keys(albums).sort(
+    function(a,b) {
+      return albums[b] - albums[a];
+    }
+  )
   return tracks;
 }
 
 function createTopArtistsResponse(data) {
   let artists = [];
   let genres = {};
+  let mostPopularArtist = { artist: "", popularity: -1 };
+  let leastPopularArtist = { artist: "", popularity: 101 };
   for (let i = 0; i < data.body.items.length; i++) {
     artists.push({id : i, artist: data.body.items[i].name, image: data.body.items[i].images[1].url});
     for (let j = 0; j < data.body.items[i].genres.length; j++) {
       let genre = data.body.items[i].genres[j];
       genres[genre] = genres[genre] ? genres[genre] + 1 : 1;
     }
+    if (data.body.items[i].popularity > mostPopularArtist.popularity) {
+      mostPopularArtist = { artist: data.body.items[i].name, popularity: data.body.items[i].popularity }
+    }
+    if (data.body.items[i].popularity < leastPopularArtist.popularity) {
+      leastPopularArtist = { artist: data.body.items[i].name, popularity: data.body.items[i].popularity }
+    }
   }
-
   let genresSorted = Object.keys(genres).sort(
     function(a,b) {
       return genres[b] - genres[a];
     }
   )
-  console.log(genresSorted.slice(0, 5));
   return artists;
 }
 
@@ -99,14 +121,15 @@ function createRecentTracksResponse(data) {
   let tracks = [];
   let artists = {};
   let years = {};
-  console.log(data.body.items[0]);
+  let albums = {}
   for (let i = 0; i < data.body.items.length; i++) {
     let currentArtist = data.body.items[i].track.artists[0].name;
     let currentYear = new Date(data.body.items[i].track.album.release_date);
+    let currentAlbum = currentArtist + "|" + data.body.items[i].track.album.name + "|" + data.body.items[i].track.album.images[1].url;
     tracks.push({id : i, artist: currentArtist, title: data.body.items[i].track.name, art: data.body.items[i].track.album.images[1].url, date: data.body.items[i].played_at});
     artists[currentArtist] = artists[currentArtist] ? artists[currentArtist] + 1 : 1;
     years[currentYear.getFullYear()] = years[currentYear.getFullYear()] ? years[currentYear.getFullYear()] + 1 : 1;
-
+    albums[currentAlbum] = albums[currentAlbum] ? albums[currentAlbum] + 1 : 1;
   }
   let artistsSorted = Object.keys(artists).sort(
     function(a,b) {
@@ -118,9 +141,12 @@ function createRecentTracksResponse(data) {
       return years[b] - years[a];
     }
   )
-  console.log(artistsSorted.slice(0, 5));
-  console.log(yearsSorted.slice(0, 5));
-  return ({tracks: tracks, topArtists: artistsSorted.slice(0, 5), topYears: yearsSorted.slice(0, 5)})
+  let albumsSorted = Object.keys(albums).sort(
+    function(a,b) {
+      return albums[b] - albums[a];
+    }
+  )
+  return ({tracks: tracks, topArtists: artistsSorted.slice(0, 5), topYears: yearsSorted.slice(0, 5), topAlbums: albumsSorted.slice(0, 5)})
 }
 
 function createFeedResponse(recentTracks, currentTrack) {
