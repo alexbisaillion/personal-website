@@ -3,6 +3,7 @@
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 15px;
   align-items: center;
+  justify-items: center;
   min-height: 100vh;
   height: 100vh;
   margin-left: 15px;
@@ -10,16 +11,23 @@
 }
 
 .recent-tracks-info-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 20% 40% 40%;
-  align-items: center;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   height: 75%;
+  width: 80%;
+  align-items: center;
+}
+
+.recent-track-stat {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-style: solid none solid none;
+  border-color: #535353;
 }
 
 .recent-track-stat-header {
-  grid-column: 1 / span 2;
   color: white;
   font-family: 'Kanit', sans-serif;
   font-weight: 600;
@@ -29,16 +37,19 @@
 }
 
 .recent-track-section-header {
-  justify-self: center;
   font-family: 'Kanit', sans-serif;
   font-weight: 600;
   font-size: 2vw;
-  justify-self: center;
+  width: 50%;
+  align-self: center;
+  text-align: center;
 }
 
 .recent-tracks-info-list {
   display: flex;
   flex-direction: column;
+  width: 50%;
+  text-align: center;
 }
 
 .recent-tracks-info-list > span {

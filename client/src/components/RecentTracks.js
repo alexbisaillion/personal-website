@@ -30,17 +30,21 @@ class RecentTracks extends Component {
       <div className="recent-tracks-container">
         <div className="recent-tracks-info-container">
           <span className="recent-track-stat-header">Recent Tracks</span>
-          <span className="recent-track-section-header">Trending Artists</span>
-          <div className="recent-tracks-info-list">
-            {this.state.topArtists.map(artist =>
-              <span key={artist}>{artist}</span>
-            )}
+          <div className="recent-track-stat">
+            <span className="recent-track-section-header">Trending Artists</span>
+            <div className="recent-tracks-info-list">
+              {this.state.topArtists.map(artist =>
+                <span key={artist}>{artist}</span>
+              )}
+            </div>
           </div>
-          <span className="recent-track-section-header">Trending Years</span>
-          <div className="recent-tracks-info-list">
-            {this.state.topYears.map(year =>
-              <span key={year}>{year}</span>
-            )}
+          <div className="recent-track-stat">
+            <span className="recent-track-section-header">Trending Years</span>
+            <div className="recent-tracks-info-list">
+              {this.state.topYears.map(year =>
+                <span key={year}>{year}</span>
+              )}
+            </div>
           </div>
         </div>
         <List>
