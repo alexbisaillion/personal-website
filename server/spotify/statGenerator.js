@@ -80,7 +80,7 @@ function createTopTracksResponse(data) {
       return albums[b] - albums[a];
     }
   )
-  return {items: tracks, info: {topYears: yearsSorted.slice(0, 5), topAlbums: albumsSorted.slice(0, 5)}};
+  return {items: tracks, info: {topYears: yearsSorted.slice(0, 3), topAlbums: albumsSorted.slice(0, 3)}};
 }
 
 function createTopArtistsResponse(data) {
@@ -95,10 +95,10 @@ function createTopArtistsResponse(data) {
       genres[genre] = genres[genre] ? genres[genre] + 1 : 1;
     }
     if (data.body.items[i].popularity > mostPopularArtist.popularity) {
-      mostPopularArtist = { artist: data.body.items[i].name, popularity: data.body.items[i].popularity }
+      mostPopularArtist = { artist: data.body.items[i].name, popularity: data.body.items[i].popularity, image: data.body.items[i].images[1].url }
     }
     if (data.body.items[i].popularity < leastPopularArtist.popularity) {
-      leastPopularArtist = { artist: data.body.items[i].name, popularity: data.body.items[i].popularity }
+      leastPopularArtist = { artist: data.body.items[i].name, popularity: data.body.items[i].popularity, image: data.body.items[i].images[1].url }
     }
   }
   let genresSorted = Object.keys(genres).sort(
@@ -106,7 +106,7 @@ function createTopArtistsResponse(data) {
       return genres[b] - genres[a];
     }
   )
-  return {items: artists, info: {topGenres: genresSorted.slice(0, 5), mostPopularArtist: mostPopularArtist, leastPopularArtist: leastPopularArtist}};
+  return {items: artists, info: {topGenres: genresSorted.slice(0, 10), mostPopularArtist: mostPopularArtist, leastPopularArtist: leastPopularArtist}};
 }
 
 function createCurrentTrackResponse(data) {
@@ -146,7 +146,7 @@ function createRecentTracksResponse(data) {
       return albums[b] - albums[a];
     }
   )
-  return ({tracks: tracks, topArtists: artistsSorted.slice(0, 5), topYears: yearsSorted.slice(0, 5), topAlbums: albumsSorted.slice(0, 5)})
+  return ({tracks: tracks, topArtists: artistsSorted.slice(0, 3), topYears: yearsSorted.slice(0, 3), topAlbums: albumsSorted.slice(0, 3)})
 }
 
 function createFeedResponse(recentTracks, currentTrack) {

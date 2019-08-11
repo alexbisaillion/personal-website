@@ -91,3 +91,35 @@ select {
   width: 50%;
   text-align: center;
 }
+
+.stat-panel-info-list > span {
+  font-size: 1em;
+}
+
+.stat-panel-popularity {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.stat-panel-popularity-image {
+  object-fit: cover;
+  width: 75px;
+  height: 75px;
+  margin: 10px;
+}
+
+.stat-panel-album-image {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+}
+
+.stat-panel-album {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

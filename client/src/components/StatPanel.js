@@ -19,6 +19,8 @@ class StatPanel extends Component {
     this.TopAlbums = this.TopAlbums.bind(this);
     this.TopYears = this.TopYears.bind(this);
     this.TopGenres = this.TopGenres.bind(this);
+    this.MostMainstream = this.MostMainstream.bind(this);
+    this.MostObscure = this.MostObscure.bind(this);
   }
 
   componentDidMount() {
@@ -58,7 +60,10 @@ class StatPanel extends Component {
         <span className="stat-panel-section-header">Top Albums</span>
         <div className="stat-panel-info-list">
           {this.state.info.topAlbums.map(album =>
-            <span key={album}>{album.split("|")[0] + " - " + album.split("|")[1]}</span>
+            <div className="stat-panel-album">
+              <img src={album.split("|")[2]} alt="art" className="stat-panel-album-image"/>              
+              <span key={album}>{album.split("|")[0] + " - " + album.split("|")[1]}</span>
+            </div>
           )}
         </div>
       </div>
@@ -84,8 +89,32 @@ class StatPanel extends Component {
         <span className="stat-panel-section-header">Top Genres</span>
         <div className="stat-panel-info-list">
           {this.state.info.topGenres.map(genre =>
-            <span key={genre}>{genre}</span>
+            <span key={genre} style={{textTransform: "capitalize"}}>{genre}</span>
           )}
+        </div>
+      </div>
+    )
+  }
+
+  MostMainstream() {
+    return (
+      <div className="stat-panel-section">
+        <span className="stat-panel-section-header">Most Mainstream</span>
+        <div className="stat-panel-popularity">
+          <img src={this.state.info.mostPopularArtist.image} alt="art" className="stat-panel-popularity-image"/>
+          <span>{this.state.info.mostPopularArtist.artist}</span>
+        </div>
+      </div>
+    )
+  }
+
+  MostObscure() {
+    return (
+      <div className="stat-panel-section">
+        <span className="stat-panel-section-header">Most Obscure</span>
+        <div className="stat-panel-popularity">
+          <img src={this.state.info.leastPopularArtist.image} alt="art" className="stat-panel-popularity-image"/>
+          <span>{this.state.info.leastPopularArtist.artist}</span>
         </div>
       </div>
     )
@@ -116,6 +145,12 @@ class StatPanel extends Component {
           }
           {this.state.itemType === "artists" &&
             <this.TopGenres></this.TopGenres>
+          }
+          {this.state.itemType === "artists" &&
+            <this.MostMainstream></this.MostMainstream>
+          }
+          {this.state.itemType === "artists" &&
+            <this.MostObscure></this.MostObscure>
           }
         </div>
         <List>

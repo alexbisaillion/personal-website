@@ -61,3 +61,16 @@
   display: flex;
   justify-content: center;
 }
+
+.recent-tracks-album-image {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+}
+
+.recent-tracks-album {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

@@ -42,7 +42,10 @@ class RecentTracks extends Component {
             <span className="recent-track-section-header">Trending Albums</span>
             <div className="recent-tracks-info-list">
               {this.state.topAlbums.map(album =>
-                <span key={album}>{album.split("|")[0] + " - " + album.split("|")[1]}</span>
+                <div className="recent-tracks-album">
+                  <img src={album.split("|")[2]} alt="art" className="recent-tracks-album-image"/>              
+                  <span key={album}>{album.split("|")[0] + " - " + album.split("|")[1]}</span>
+                </div>
               )}
             </div>
           </div>
