@@ -7,13 +7,13 @@ import LoadingIcon from './LoadingIcon';
 class RecentTracks extends Component {
   constructor(props) {
     super(props);
-    this.state = {recentTracks: [], numResults: 50, topYears: [], topArtists: [], isLoading: true};
+    this.state = {recentTracks: [], numResults: 50, topYears: [], topArtists: [], topAlbums: [], isLoading: true};
   }
 
   componentDidMount() {
     fetch(`/stats?type=recentTracks&numResults=${this.state.numResults}`)
       .then(res => res.json())
-      .then(res => this.setState({ recentTracks: res.tracks, topYears: res.topYears, topArtists: res.topArtists, isLoading: false }));
+      .then(res => this.setState({ recentTracks: res.tracks, topYears: res.topYears, topArtists: res.topArtists, topAlbums: res.topAlbums, isLoading: false }));
   }
 
   render() {
@@ -35,6 +35,14 @@ class RecentTracks extends Component {
             <div className="recent-tracks-info-list">
               {this.state.topArtists.map(artist =>
                 <span key={artist}>{artist}</span>
+              )}
+            </div>
+          </div>
+          <div className="recent-track-stat">
+            <span className="recent-track-section-header">Trending Albums</span>
+            <div className="recent-tracks-info-list">
+              {this.state.topAlbums.map(album =>
+                <span key={album}>{album.split("|")[0] + " - " + album.split("|")[1]}</span>
               )}
             </div>
           </div>
