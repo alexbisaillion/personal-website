@@ -3,6 +3,7 @@
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 15px;
   align-items: center;
+  justify-items: center;
   min-height: 100vh;
   height: 100vh;
   margin-left: 15px;
@@ -14,6 +15,10 @@
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 15px;
+}
+
+form {
+  width: 100%;
 }
 
 input {
@@ -43,4 +48,46 @@ select {
   grid-column: 1 / span 2;
   display: flex;
   justify-content: center;
+}
+
+.stat-panel-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 75%;
+  width: 80%;
+  align-items: center;  
+}
+
+.stat-panel-info-header {
+  color: white;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 600;
+  font-size: 4vw;
+  text-transform: uppercase;
+  justify-self: center;
+}
+
+.stat-panel-section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-style: solid none solid none;
+  border-color: #535353;
+}
+
+.stat-panel-section-header {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 600;
+  font-size: 2vw;
+  width: 50%;
+  align-self: center;
+  text-align: center;
+}
+
+.stat-panel-info-list {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  text-align: center;
 }

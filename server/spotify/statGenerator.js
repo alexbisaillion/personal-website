@@ -80,7 +80,7 @@ function createTopTracksResponse(data) {
       return albums[b] - albums[a];
     }
   )
-  return tracks;
+  return {items: tracks, info: {topYears: yearsSorted.slice(0, 5), topAlbums: albumsSorted.slice(0, 5)}};
 }
 
 function createTopArtistsResponse(data) {
@@ -106,7 +106,7 @@ function createTopArtistsResponse(data) {
       return genres[b] - genres[a];
     }
   )
-  return artists;
+  return {items: artists, info: {topGenres: genresSorted.slice(0, 5), mostPopularArtist: mostPopularArtist, leastPopularArtist: leastPopularArtist}};
 }
 
 function createCurrentTrackResponse(data) {

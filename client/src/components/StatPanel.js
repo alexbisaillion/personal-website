@@ -13,19 +13,22 @@ const ranges = {
 class StatPanel extends Component {
   constructor(props) {
     super(props);
-    this.state = {items: [], numResults: 50, timeRange: ranges.SHORT_TERM, itemType: props.itemType, isLoading: true};
+    this.state = {items: [], numResults: 50, timeRange: ranges.SHORT_TERM, itemType: props.itemType, isLoading: true, info: {}};
     this.handleInputChange = this.handleInputChange.bind(this);
     this.updateResults = this.updateResults.bind(this);
+    this.TopAlbums = this.TopAlbums.bind(this);
+    this.TopYears = this.TopYears.bind(this);
+    this.TopGenres = this.TopGenres.bind(this);
   }
 
   componentDidMount() {
     fetch(`/stats?type=${this.state.itemType}&timeRange=${this.state.timeRange}&numResults=${this.state.numResults}`)
       .then(res => res.json())
-      .then(items => this.setState({ items: items, isLoading: false }));
+      .then(response => this.setState({ items: response.items, isLoading: false, info: response.info }));
   }
 
   updateResults(event) {
-    fetch(`/stats?type=${this.state.itemType}&timeRange=${this.state.timeRange}&numResults=${this.state.numResults}`).then(res => res.json()).then(items => this.setState({ items }));
+    fetch(`/stats?type=${this.state.itemType}&timeRange=${this.state.timeRange}&numResults=${this.state.numResults}`).then(res => res.json()).then(response => this.setState({ items: response.items, info: response.info }));
     event.preventDefault();
   }
 
@@ -49,6 +52,45 @@ class StatPanel extends Component {
     )
   }
 
+  TopAlbums() {
+    return (
+      <div className="stat-panel-section">
+        <span className="stat-panel-section-header">Top Albums</span>
+        <div className="stat-panel-info-list">
+          {this.state.info.topAlbums.map(album =>
+            <span key={album}>{album.split("|")[0] + " - " + album.split("|")[1]}</span>
+          )}
+        </div>
+      </div>
+    )
+  }
+
+  TopYears() {
+    return (
+      <div className="stat-panel-section">
+        <span className="stat-panel-section-header">Top Years</span>
+        <div className="stat-panel-info-list">
+          {this.state.info.topYears.map(year =>
+            <span key={year}>{year}</span>
+          )}
+        </div>
+      </div>
+    )
+  }
+
+  TopGenres() {
+    return (
+      <div className="stat-panel-section">
+        <span className="stat-panel-section-header">Top Genres</span>
+        <div className="stat-panel-info-list">
+          {this.state.info.topGenres.map(genre =>
+            <span key={genre}>{genre}</span>
+          )}
+        </div>
+      </div>
+    )
+  }
+
   render() {
     if (this.state.isLoading) {
       return (
@@ -59,9 +101,23 @@ class StatPanel extends Component {
         </div>
       )
     }
+
+    let header = <span className="stat-panel-info-header">{this.state.itemType === "artists" ? "Top Artists" : "Top Tracks"}</span>
     return (
       <div className="stat-section-container">
-        <div>{this.resultsForm()}</div>
+        <div className="stat-panel-info-container">
+          {header}
+          {this.resultsForm()}
+          {this.state.itemType === "tracks" &&
+            <this.TopAlbums></this.TopAlbums>
+          }
+          {this.state.itemType === "tracks" &&
+            <this.TopYears></this.TopYears>
+          }
+          {this.state.itemType === "artists" &&
+            <this.TopGenres></this.TopGenres>
+          }
+        </div>
         <List>
           {this.state.items.map(item =>
             <ListEntry art={item.image} artist={item.artist} track={item.title} key={item.id}></ListEntry>
