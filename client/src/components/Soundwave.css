@@ -1,8 +1,6 @@
 #bars {
   display: flex;
   flex-direction: row;
-  height: 20%;
-  width: 50%;
   align-items: flex-end;
   justify-content: flex-end;
 }

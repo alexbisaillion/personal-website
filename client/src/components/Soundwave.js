@@ -13,7 +13,7 @@ class Soundwave extends Component {
       }
     }
     return (
-      <div id='bars'>
+      <div id='bars' style={{height: this.props.height}}>
         {bars}
       </div>
     );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Music from './Music';
+import Home from './Home';
 import './App.css'
 import NavigationBar from './NavigationBar';
 
@@ -11,7 +12,7 @@ class App extends Component {
       <Router>
           <NavigationBar></NavigationBar>
           <div id="content">
-            <Route path="/" exact component={Index} />
+            <Route path="/" exact component={Home} />
             <Route path="/about/" component={About} />
             <Route path="/music/" component={Music} />
           </div>
