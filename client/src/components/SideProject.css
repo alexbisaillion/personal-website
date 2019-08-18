@@ -1,0 +1,23 @@
+.side-project-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.side-project-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  font-weight: 600;
+  font-size: 3em;
+  justify-content: space-between;
+}
+
+.technology-image {
+  filter: invert(1);
+}
+
+.technology-image:hover {
+  filter: red;
+}

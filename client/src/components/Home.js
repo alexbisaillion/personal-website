@@ -50,6 +50,9 @@ class Home extends Component {
           <Link to="/music/" className="sectionHeader">Music</Link>
           <p>This page showcases my music listening habits, including my currently playing track, recent listening history, and top artists and songs for varying time ranges. It was built using the Spotify API.</p>
         </div>
+        <div className="section">
+          <Link to="/sideprojects/" className="sectionHeader">Side Projects</Link>
+        </div>
         {currentlyPlaying}
       </div>
     );
