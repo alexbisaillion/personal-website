@@ -106,7 +106,7 @@ function createTopArtistsResponse(data) {
       return genres[b] - genres[a];
     }
   )
-  return {items: artists, info: {topGenres: genresSorted.slice(0, 10), mostPopularArtist: mostPopularArtist, leastPopularArtist: leastPopularArtist}};
+  return {items: artists, info: {topGenres: genresSorted.slice(0, 5), mostPopularArtist: mostPopularArtist, leastPopularArtist: leastPopularArtist}};
 }
 
 function createCurrentTrackResponse(data) {

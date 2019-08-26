@@ -25,9 +25,9 @@ class Home extends Component {
   render() {
     let currentlyPlaying;
     if (this.state.isLoading) {
-      currentlyPlaying = <div className="currentlyPlaying" ref={this.info} style={{height: "260px"}}><LoadingIcon height="100px" width="100px"></LoadingIcon></div>
+      currentlyPlaying = <div className="currentlyPlaying" ref={this.info} style={{minHeight: "260px"}}><LoadingIcon height="100px" width="100px"></LoadingIcon></div>
     } else {
-      let gradient = `linear-gradient(to right, ${this.state.currentTrack.colour}, black, black, ${this.state.currentTrack.colour})`
+      let gradient = `radial-gradient(circle at top right, ${this.state.currentTrack.colour}, black, black, black)`
       currentlyPlaying = (
         <div className="currentlyPlaying" style={{background: gradient}} ref={this.info}>
           <span style={{ fontSize: "1em", marginRight: "30px"}}>{this.state.currentTrack.isPlaying ? "I'm currently listening to..." : "I last listened to..."}</span>

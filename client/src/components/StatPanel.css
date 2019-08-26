@@ -112,6 +112,8 @@ select {
 }
 
 .stat-panel-album-image {
+  min-width: 30px;
+  max-width: 30px;
   width: 30px;
   height: 30px;
   margin: 5px;
