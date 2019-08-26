@@ -3,8 +3,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   margin-top: 70px
+}
+
+.home-container a {
+  text-decoration: none;
 }
 
 h1 {

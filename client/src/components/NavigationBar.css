@@ -28,7 +28,7 @@
   float: right;
 }
 
-svg {
+.topnav svg {
   display: block;
   filter: invert(1)
 }

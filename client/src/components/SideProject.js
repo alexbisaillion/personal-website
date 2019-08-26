@@ -7,9 +7,9 @@ class SideProject extends Component {
       <div className="side-project-container">
         <div className="side-project-header">
           <span>{this.props.name}</span>
-          <div>
+          <div className="side-project-icons">
             {this.props.technologies.map(item =>
-              <img className="technology-image" src={item.image} height="100px" width="100px" style={{fill: item.colour}}></img>
+              <item.image className="technology-image" height="60px" width="60px" style={{fill: item.colour, title: item.name}} title={item.name}></item.image>
             )}
           </div>
         </div>
