@@ -1,6 +1,7 @@
 .side-project-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
 }
 
@@ -17,4 +18,12 @@
 .side-project-icons {
   display: flex;
   flex-direction: row;
+}
+
+.side-project-image-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-items: center;
+  grid-gap: 30px;
+  margin-top: 30px;
 }

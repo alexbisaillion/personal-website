@@ -8,6 +8,10 @@ import { ReactComponent as Html5Img } from '../img/html5.svg';
 import { ReactComponent as JavaScriptImg } from '../img/javascript.svg';
 import { ReactComponent as JavaImg } from '../img/java.svg';
 import { ReactComponent as PythonImg } from '../img/python.svg';
+import MusicManagerConfirmation from '../img/ConfirmationDialog.PNG';
+import MusicManagerMainScreen from '../img/MainScreen.PNG';
+import MusicManagerProcessing from '../img/ProcessingDialog.PNG';
+import MusicManagerSetup from '../img/SetupDialog.PNG';
 
 class Technology {
   constructor(name, colour, image) {
@@ -31,13 +35,14 @@ let websiteGithub = "https://github.com/alexbisaillion/website";
 let musicManagerTechnologies = [java, python];
 let musicManagerDescription = "This is a JavaFX application I built to automate my music library of local files. It allows for archive and audio files to be sorted into a music library, added to iTunes, converted into MP3 and AAC format via iTunes, and have the converted files moved around within the local file system. Supported archive file types include .zip, .rar, and .7z, while supported audio file types include all that are supported by iTunes, including .m4a, .mp3, .aac, .wav, and .aiff.\nThe application is written in Java, with JavaFX driving the user interface, while Python is used to communicate to the iTunes COM interface.";
 let musicManagerGithub = "https://github.com/alexbisaillion/LocalMusicManager";
+let musicManagerImages = [MusicManagerMainScreen, MusicManagerProcessing, MusicManagerConfirmation, MusicManagerSetup];
 
 class SideProjectPage extends Component {
   render() {
     return (
       <div className="side-project-page-container">
-        <SideProject technologies={websiteTechnologies} name="Personal Website" description={websiteDescription} github={websiteGithub}></SideProject>
-        <SideProject technologies={musicManagerTechnologies} name="Local Music Manager" description={musicManagerDescription} github={musicManagerGithub}></SideProject>
+        <SideProject technologies={websiteTechnologies} name="Personal Website" description={websiteDescription} images={[]} github={websiteGithub}></SideProject>
+        <SideProject technologies={musicManagerTechnologies} name="Local Music Manager" description={musicManagerDescription} images={musicManagerImages} github={musicManagerGithub}></SideProject>
       </div>
     )
   }
