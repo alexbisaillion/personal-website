@@ -7,6 +7,6 @@
   justify-self: center;
   border-radius: 50%;
   border: 5px solid white;
-  border-top-color: #000;
+  border-top-color: #151515;
   animation: spinner .6s linear infinite;
 }

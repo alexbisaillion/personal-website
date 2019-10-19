@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background-color: black;
+  background-color: #181818;
 }
 
 #content {
@@ -16,7 +16,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: black; 
+  background: #181818; 
 }
  
 ::-webkit-scrollbar-thumb {

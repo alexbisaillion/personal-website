@@ -33,7 +33,7 @@ class CurrentTrack extends Component {
         </div>
       )
     }
-    let gradient = `radial-gradient(circle at top right, ${this.state.currentTrack.colour}, black, black)`
+    let gradient = `radial-gradient(circle at top right, ${this.state.currentTrack.colour}, #181818, #181818)`
     let status;
     if (this.state.currentTrack.isPlaying) {
       status = <span>Now Playing</span>
