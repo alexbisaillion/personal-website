@@ -67,8 +67,9 @@ app.get('/recentTracks', (req, res) => {
   }
 });
 
-app.get('*', (req, res) => {
-  res.status(400).send("Resource not found.");
+app.get('/*', (req, res) => {
+  let url = path.join(__dirname, './client/build', 'index.html');
+  res.sendFile(url);
 });
 
 const port = process.env.PORT || 3001;
