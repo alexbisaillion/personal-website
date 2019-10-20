@@ -17,7 +17,7 @@ class Home extends Component {
   }
 
   fetchResults() {
-    fetch(`/stats?type=currentTrack`)
+    fetch(`/currentTrack`)
       .then(res => res.json())
       .then(currentTrack => this.setState({ currentTrack: currentTrack, infoWidth: this.info.current.offsetWidth, isLoading: false}));
   }

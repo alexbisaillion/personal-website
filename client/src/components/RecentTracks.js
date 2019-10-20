@@ -11,7 +11,7 @@ class RecentTracks extends Component {
   }
 
   componentDidMount() {
-    fetch(`/stats?type=recentTracks&numResults=${this.state.numResults}`)
+    fetch(`/recentTracks?numResults=${this.state.numResults}`)
       .then(res => res.json())
       .then(res => this.setState({ recentTracks: res.tracks, topYears: res.topYears, topArtists: res.topArtists, topAlbums: res.topAlbums, isLoading: false }));
   }

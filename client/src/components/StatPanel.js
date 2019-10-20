@@ -24,13 +24,13 @@ class StatPanel extends Component {
   }
 
   componentDidMount() {
-    fetch(`/stats?type=${this.state.itemType}&timeRange=${this.state.timeRange}&numResults=${this.state.numResults}`)
+    fetch(`/${this.state.itemType}?timeRange=${this.state.timeRange}&numResults=${this.state.numResults}`)
       .then(res => res.json())
       .then(response => this.setState({ items: response.items, isLoading: false, info: response.info }));
   }
 
   updateResults(event) {
-    fetch(`/stats?type=${this.state.itemType}&timeRange=${this.state.timeRange}&numResults=${this.state.numResults}`).then(res => res.json()).then(response => this.setState({ items: response.items, info: response.info }));
+    fetch(`/${this.state.itemType}?timeRange=${this.state.timeRange}&numResults=${this.state.numResults}`).then(res => res.json()).then(response => this.setState({ items: response.items, info: response.info }));
     event.preventDefault();
   }
 
