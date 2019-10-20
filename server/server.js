@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const statGenerator = require('./spotify/statGenerator');
+const routes = require('./spotify/routes');
 
 const app = express();
 
@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/tracks', (req, res) => {
   if (req.query.numResults && req.query.timeRange) {
-    statGenerator.getTopTracks(req.query.timeRange, req.query.numResults).then(
+    routes.getTopTracks(req.query.timeRange, req.query.numResults).then(
       function (data) {
         console.log("Tracks request completed successfully.");
         res.json(data);
@@ -25,7 +25,7 @@ app.get('/tracks', (req, res) => {
 
 app.get('/artists', (req, res) => {
   if (req.query.numResults && req.query.numResults) {
-    statGenerator.getTopArtists(req.query.timeRange, req.query.numResults).then(
+    routes.getTopArtists(req.query.timeRange, req.query.numResults).then(
       function (data) {
         console.log("Artists request completed successfully.");
         res.json(data);
@@ -40,7 +40,7 @@ app.get('/artists', (req, res) => {
 });
 
 app.get('/currentTrack', (req, res) => {
-  statGenerator.getCurrentTrack().then(
+  routes.getCurrentTrack().then(
     function (data) {
       console.log("Current track request completed successfully.");
       res.json(data);
@@ -53,7 +53,7 @@ app.get('/currentTrack', (req, res) => {
 
 app.get('/recentTracks', (req, res) => {
   if (req.query.numResults) {
-    statGenerator.getRecentTracks(req.query.numResults).then(
+    routes.getRecentTracks(req.query.numResults).then(
       function (data) {
         console.log("Recent tracks request completed successfully.");
         res.json(data);
