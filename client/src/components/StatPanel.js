@@ -60,7 +60,7 @@ class StatPanel extends Component {
         <span className="stat-panel-section-header">Top Albums</span>
         <div className="stat-panel-info-list">
           {this.state.info.topAlbums.map(album =>
-            <div className="stat-panel-album">
+            <div className="stat-panel-album" key={album}>
               <img src={album.split("|")[2]} alt="art" className="stat-panel-album-image"/>              
               <span key={album}>{album.split("|")[0] + " - " + album.split("|")[1]}</span>
             </div>

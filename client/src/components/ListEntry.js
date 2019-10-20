@@ -13,7 +13,7 @@ class ListEntry extends Component {
     }
 
     return (
-      <div className="list-entry-container">
+      <div className="list-entry-container" key={this.props.id}>
         <img src={this.props.art} alt="art" className="list-entry-image"/>
         <div className="list-entry-info-container">
           {formattedArtist}
