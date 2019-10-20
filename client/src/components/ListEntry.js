@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import moment from 'moment';
 import './ListEntry.css'
 
 const seenLive = ["The Weeknd", "6LACK", "Belly", "Rae Sremmurd", "Kendrick Lamar", "DRAM", "YG", "ScHoolboy Q", "Jay Rock", "Ab-Soul", "SiR", "Lance Skiiiwalker", "Travis Scott", "Sheck Wes"];
@@ -23,7 +22,7 @@ class ListEntry extends Component {
           }
         </div>
         {this.props.timestamp &&
-          <span className="list-entry-timestamp">{moment(new Date(this.props.timestamp)).fromNow()}</span>
+          <span className="list-entry-timestamp">{this.props.timestamp}</span>
         }
       </div>
     );

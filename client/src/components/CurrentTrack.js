@@ -3,7 +3,6 @@ import './CurrentTrack.css'
 import Soundwave from './Soundwave';
 import LoadingIcon from './LoadingIcon';
 import refresh from '../img/refresh.svg'
-import moment from 'moment';
 
 class CurrentTrack extends Component {
   constructor(props) {
@@ -38,7 +37,7 @@ class CurrentTrack extends Component {
     if (this.state.currentTrack.isPlaying) {
       status = <span>Now Playing</span>
     } else if (this.state.currentTrack.date) {
-      status = <div className="offline-status"><span>Offline</span><span>{moment(new Date(this.state.currentTrack.date)).fromNow()}</span></div>
+      status = <div className="offline-status"><span>Offline</span><span>{this.state.currentTrack.date}</span></div>
     } else {
       status = <span>Offline</span>
     }

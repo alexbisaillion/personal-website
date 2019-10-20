@@ -1,6 +1,7 @@
 let SpotifyWebApi = require('spotify-web-api-node');
-let credentials = require('../spotify/credentials');
+let credentials = require('./credentials');
 let vibrant = require('node-vibrant');
+let moment = require('moment');
 
 let spotifyApi = new SpotifyWebApi({
   clientId: credentials.CLIENT_ID,
@@ -110,11 +111,11 @@ function createTopArtistsResponse(data) {
 }
 
 function createCurrentTrackResponse(data) {
-  return ({artist: data.body.item.artists[0].name, track: data.body.item.name, album: data.body.item.album.name, art: data.body.item.album.images[0].url, isPlaying: data.body.is_playing, date: data.body.timestamp})
+  return ({artist: data.body.item.artists[0].name, track: data.body.item.name, album: data.body.item.album.name, art: data.body.item.album.images[0].url, isPlaying: data.body.is_playing, date: moment(new Date(data.body.timestamp)).fromNow()})
 }
 
 function createLastTrackResponse(data) {
-  return ({artist: data.body.items[0].track.artists[0].name, track: data.body.items[0].track.name, art: data.body.items[0].track.album.images[0].url, date: data.body.items[0].played_at});
+  return ({artist: data.body.items[0].track.artists[0].name, track: data.body.items[0].track.name, art: data.body.items[0].track.album.images[0].url, date: moment(new Date(data.body.items[0].played_at)).fromNow()});
 }
 
 function createRecentTracksResponse(data) {
@@ -126,7 +127,7 @@ function createRecentTracksResponse(data) {
     let currentArtist = data.body.items[i].track.artists[0].name;
     let currentYear = new Date(data.body.items[i].track.album.release_date);
     let currentAlbum = currentArtist + "|" + data.body.items[i].track.album.name + "|" + data.body.items[i].track.album.images[1].url;
-    tracks.push({id : i, artist: currentArtist, title: data.body.items[i].track.name, art: data.body.items[i].track.album.images[1].url, date: data.body.items[i].played_at});
+    tracks.push({id : i, artist: currentArtist, title: data.body.items[i].track.name, art: data.body.items[i].track.album.images[1].url, date: moment(new Date(data.body.items[i].played_at)).fromNow()});
     artists[currentArtist] = artists[currentArtist] ? artists[currentArtist] + 1 : 1;
     years[currentYear.getFullYear()] = years[currentYear.getFullYear()] ? years[currentYear.getFullYear()] + 1 : 1;
     albums[currentAlbum] = albums[currentAlbum] ? albums[currentAlbum] + 1 : 1;
