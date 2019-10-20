@@ -2,7 +2,8 @@
   "name": "website",
   "version": "0.0.0",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "express": "~4.16.0",
