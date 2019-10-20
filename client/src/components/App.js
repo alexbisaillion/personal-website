@@ -14,7 +14,6 @@ class App extends Component {
           <NavigationBar></NavigationBar>
           <div id="content">
             <Route path="/" exact component={Home} />
-            <Route path="/about/" component={About} />
             <Route path="/music/" component={Music} />
             <Route path="/sideprojects/" component={SideProjectPage} />
           </div>
@@ -22,14 +21,6 @@ class App extends Component {
       
     )
   }
-}
-
-function Index() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
 }
 
 export default App;

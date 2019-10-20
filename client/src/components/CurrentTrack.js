@@ -47,7 +47,7 @@ class CurrentTrack extends Component {
           <span className="current-track-artist">{this.state.currentTrack.artist}</span>
           <span className="current-track-title">{this.state.currentTrack.track}</span>
           <div className="current-track-status">
-            <img className="refresh" src={refresh} onClick={() => this.fetchResults()}></img>
+            <img className="refresh" src={refresh} onClick={() => this.fetchResults()} alt="refresh"></img>
             {status}
           </div>
           <Soundwave colour={this.state.currentTrack.colour} infoWidth={this.state.infoWidth * 0.25} isPlaying={this.state.currentTrack.isPlaying} height="20%"></Soundwave>

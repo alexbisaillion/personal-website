@@ -16,7 +16,7 @@ class SideProject extends Component {
         <span>{this.props.description}</span>
         <div className="side-project-image-grid">
           {this.props.images.map(item =>
-            <img src={item} width="100%"/>
+            <img src={item} width="100%" alt="sideproject"/>
           )}
         </div>
         <span style={{alignSelf: "center"}}>View on <a href={this.props.github}>GitHub</a></span>
