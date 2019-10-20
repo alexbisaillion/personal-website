@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ListEntry.css'
 
-const seenLive = ["The Weeknd", "6LACK", "Belly", "Rae Sremmurd", "Kendrick Lamar", "DRAM", "YG", "ScHoolboy Q", "Jay Rock", "Ab-Soul", "SiR", "Lance Skiiiwalker", "Travis Scott", "Sheck Wes"];
+const seenLive = require('../data/live');
 
 class ListEntry extends Component {
   render() {
