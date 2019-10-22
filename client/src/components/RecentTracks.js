@@ -44,7 +44,7 @@ class RecentTracks extends Component {
               {this.state.topAlbums.map(album =>
                 <div className="recent-tracks-album" key={album}>
                   <img src={album.split("|")[2]} alt="art" className="recent-tracks-album-image"/>              
-                  <span key={album}>{album.split("|")[0] + " - " + album.split("|")[1]}</span>
+                  <span key={album} className="recent-tracks-album-title">{album.split("|")[0] + " - " + album.split("|")[1]}</span>
                 </div>
               )}
             </div>

@@ -120,6 +120,16 @@ select {
   margin: 5px;
 }
 
+.stat-panel-album-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.stat-panel-album-title:hover {
+  overflow: visible;
+}
+
 .stat-panel-album {
   display: flex;
   flex-direction: row;
