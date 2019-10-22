@@ -1,0 +1,20 @@
+[
+  {
+    "title": "MUSIC",
+    "image": "/tameimpala.jpg",
+    "description": "This page showcases my current and recent music listening history and top artists/songs for varying time ranges. It was built using the Spotify API.",
+    "link": "/music/"
+  },
+  {
+    "title": "RESUME",
+    "image": "/resumepreview.jpg",
+    "description": "This is the latest 1-page version of my resume in PDF format, updated as of October 2019. Subject to change.",
+    "link": "/music/"
+  },
+  {
+    "title": "SIDE PROJECTS",
+    "image": "/sideproject.jpg",
+    "description": "This is where I document my side projects, including features used in this website and my \"Local Music Manager\" project.",
+    "link": "/sideprojects/"
+  }
+]
