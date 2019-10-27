@@ -3,7 +3,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 70px
+  margin-top: 90px;
+  margin-bottom: 40px;
 }
 
 .home-container a {
@@ -25,9 +26,11 @@ h1 {
 .cards {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  justify-content: space-evenly;
+  width: 90%;
+  justify-content: space-around;
   align-items: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .trackInformation {
@@ -55,4 +58,14 @@ h1 {
 .sectionHeader {
   font-weight: 600;
   font-size: 4em;
+}
+
+.introduction {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background-color: #424242;
+  border-radius: 25px;
+  align-items: center;
+  padding: 20px;
 }
