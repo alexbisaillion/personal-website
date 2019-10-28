@@ -33,11 +33,11 @@ class Home extends Component {
       let gradient = `radial-gradient(circle at top, #181818, #181818, ${this.state.currentTrack.colour})`
       currentlyPlaying = (
         <div className="currentlyPlaying" style={{background: gradient, height: "260px", width: "90%", borderRadius: "25px", borderStyle: "solid", borderColor: this.state.currentTrack.colour}} ref={this.info}>
-          <span style={{ fontSize: "1em", marginRight: "30px"}}>{this.state.currentTrack.isPlaying ? "I'm currently listening to..." : "I last listened to..."}</span>
+          <span style={{ fontSize: "1vw", marginRight: "30px"}}>{this.state.currentTrack.isPlaying ? "I'm currently listening to..." : "I last listened to..."}</span>
           <img src={this.state.currentTrack.art} alt="art" className="trackArt"/>
           <div className="trackInformation">
             <span className="trackArtist">{this.state.currentTrack.artist}</span>
-            <span style={{ fontSize: "1em"}}><i>{this.state.currentTrack.track}</i></span>
+            <span style={{ fontSize: "1.5vw"}}><i>{this.state.currentTrack.track}</i></span>
           </div>
           <Soundwave colour={this.state.currentTrack.colour} infoWidth={this.state.infoWidth * 0.15} isPlaying={this.state.currentTrack.isPlaying} height="40%"></Soundwave>
         </div>
