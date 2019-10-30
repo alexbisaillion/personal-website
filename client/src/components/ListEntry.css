@@ -17,6 +17,7 @@
   display: flex;
   flex-direction: column;
   margin-left: 15px;
+  min-width: 0;
 }
 
 .list-entry-artist {
@@ -25,6 +26,9 @@
   font-weight: 600;
   text-transform: uppercase;
   font-size: 1.5em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .list-entry-artist-live {
@@ -33,6 +37,9 @@
   font-weight: 600;
   text-transform: uppercase;
   font-size: 1.5em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .list-entry-track {
@@ -41,6 +48,9 @@
   font-weight: 300;
   font-size: 1em;
   font-style: italic;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .list-entry-timestamp {
@@ -50,4 +60,7 @@
   font-family: 'Kanit', sans-serif;
   font-weight: 300;
   font-size: 1em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

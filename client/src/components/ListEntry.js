@@ -7,9 +7,9 @@ class ListEntry extends Component {
   render() {
     let formattedArtist;
     if (seenLive.includes(this.props.artist)) {
-      formattedArtist = <span className="list-entry-artist-live">{this.props.artist}</span>;
+      formattedArtist = <div className="list-entry-artist-live">{this.props.artist}</div>;
     } else {
-      formattedArtist = <span className="list-entry-artist">{this.props.artist}</span>;
+      formattedArtist = <div className="list-entry-artist">{this.props.artist}</div>;
     }
 
     return (
@@ -18,11 +18,11 @@ class ListEntry extends Component {
         <div className="list-entry-info-container">
           {formattedArtist}
           {this.props.track &&
-            <span className="list-entry-track">{this.props.track}</span>
+            <div className="list-entry-track">{this.props.track}</div>
           }
         </div>
         {this.props.timestamp &&
-          <span className="list-entry-timestamp">{this.props.timestamp}</span>
+          <div className="list-entry-timestamp">{this.props.timestamp}</div>
         }
       </div>
     );
