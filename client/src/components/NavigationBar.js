@@ -20,13 +20,13 @@ class NavigationBar extends Component {
           </div>
         </div>
         <div className="navbar-right">
-          <a href="https://github.com/alexbisaillion" target="_blank">
+          <a href="https://github.com/alexbisaillion" target="_blank" rel="noopener noreferrer">
             <GitHub width={25} height={25}></GitHub>
           </a>
-          <a href="https://www.linkedin.com/in/alexbisaillion/" target="_blank">
+          <a href="https://www.linkedin.com/in/alexbisaillion/" target="_blank" rel="noopener noreferrer">
             <LinkedIn width={25} height={25}></LinkedIn>
           </a>
-          <a href="mailto:a.bisaillion@gmail.com" target="_blank">
+          <a href="mailto:a.bisaillion@gmail.com" target="_blank" rel="noopener noreferrer">
             <Gmail width={25} height={25}></Gmail>
           </a>
         </div>
