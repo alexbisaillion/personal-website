@@ -1,9 +1,9 @@
 .stat-section-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 15px;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-items: center;
+  justify-content: center;
   min-height: 100vh;
   height: 100vh;
   margin-left: 15px;
@@ -55,8 +55,9 @@ select {
   flex-direction: column;
   justify-content: space-evenly;
   height: 75%;
-  width: 80%;
-  align-items: center;  
+  width: 45%;
+  align-items: center;
+  margin-right: 15px;
 }
 
 .stat-panel-info-header {
@@ -94,7 +95,7 @@ select {
 }
 
 .stat-panel-info-list > span {
-  font-size: 1em;
+  font-size: 1.25vw;
 }
 
 .stat-panel-popularity {
@@ -124,6 +125,7 @@ select {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  font-size: 1.25vw;
 }
 
 .stat-panel-album-title:hover {
