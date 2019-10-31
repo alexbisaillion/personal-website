@@ -8,10 +8,18 @@ import { ReactComponent as Gmail } from '../img/gmail.svg';
 class NavigationBar extends Component {
   render() {
     return (
-      <div className="topnav">
-        <Link to="/">Alex Bisaillion</Link>
-        <Link to="/music/">Music</Link>
-        <div className="topnav-right">
+      <div className="navbar">
+        <div className="dropdown">
+          <div className="dropbtn">
+            ALEX BISAILLION
+          </div>
+          <div className="dropdown-content">
+            <Link to="/">Home</Link>
+            <Link to="/music/">Music</Link>
+            <Link to="/sideprojects/">Side Projects</Link>
+          </div>
+        </div>
+        <div className="navbar-right">
           <a href="https://github.com/alexbisaillion">
             <GitHub width={25} height={25}></GitHub>
           </a>
