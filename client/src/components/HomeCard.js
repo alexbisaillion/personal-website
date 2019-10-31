@@ -29,6 +29,20 @@ const theme = createMuiTheme({
 
 export default function HomeCard(props) {
   const classes = useStyles();
+  let link;
+  if (props.info.link.endsWith(".pdf")) {
+    link = (
+      <a href={props.info.link} target="_blank" rel="noopener noreferrer">
+        <span style={{fontFamily: 'Kanit, sans-serif', fontWeight: 600, fontSize: '1.25em', color: '#56B5D9'}}>View</span>
+      </a>
+    )
+  } else {
+    link = (
+      <Link to={props.info.link}>
+        <span style={{fontFamily: 'Kanit, sans-serif', fontWeight: 600, fontSize: '1.25em', color: '#56B5D9'}}>View</span>
+      </Link>
+    )
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -49,9 +63,7 @@ export default function HomeCard(props) {
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">
-              <Link to={props.info.link}>
-                <span style={{fontFamily: 'Kanit, sans-serif', fontWeight: 600, fontSize: '1.25em', color: '#56B5D9'}}>View</span>
-              </Link>
+            {link}
           </Button>
         </CardActions>
       </Card>
