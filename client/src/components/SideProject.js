@@ -36,7 +36,13 @@ class SideProject extends Component {
                   onMouseLeave = {() => this.setState({hoverItem: ""})}
                   height = "60px"
                   width = "60px"
-                  style = {{fill: this.state.hoverItem === item.name ? item.colour : "white", title: item.name}}
+                  style = {{
+                    fill: this.state.hoverItem === item.name ? item.colour : "white",
+                    filter: this.state.hoverItem === item.name ? `drop-shadow(0px 15px 20px ${item.colour})` : "",
+                    transform: this.state.hoverItem === item.name ? "translateY(-7px)" : "",
+                    title: item.name,
+                    transition: "all 0.3s ease 0s",
+                  }}
                   title = {item.name}
                   key = {item.name}
                 >
@@ -73,9 +79,6 @@ class SideProject extends Component {
               />
             )}
           </div>
-
-          {/*<span style={{alignSelf: "center"}}>View on <a href={this.props.github}>GitHub</a></span>*/}
-
         </div>
       </div>
     )
