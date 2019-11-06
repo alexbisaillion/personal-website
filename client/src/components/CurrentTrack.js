@@ -50,7 +50,7 @@ class CurrentTrack extends Component {
             <img className="refresh" src={refresh} onClick={() => this.fetchResults()} alt="refresh"></img>
             {status}
           </div>
-          <Soundwave colour={this.state.currentTrack.colour} infoWidth={this.state.infoWidth * 0.25} isPlaying={this.state.currentTrack.isPlaying} height="15%"></Soundwave>
+          <Soundwave colour={this.state.currentTrack.colour} infoWidth={this.state.infoWidth * 0.25} isPlaying={this.state.currentTrack.isPlaying} height="20%"></Soundwave>
         </div>
         <div className="current-track-image-container">
           <img src={this.state.currentTrack.art} alt="art" className="current-track-image"/>

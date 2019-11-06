@@ -1,8 +1,63 @@
-.current-track-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 100vh;
-  height: 100vh;
+@media only screen and (min-width: 768px) {
+  .current-track-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100vh;
+    height: 100vh;
+  }
+
+  .current-track-info-container {
+    justify-content: flex-end;
+    align-self: flex-end;
+    margin-right: 1em;
+    margin-bottom: 20%;
+    max-height: 600px;
+  }
+
+  .current-track-status {
+    width: 50%;
+  }
+
+  .current-track-image {
+    width: 60%;
+    max-height: 600px;
+  }
+  
+  .current-track-image-container {
+    justify-content: flex-end;
+    align-self: flex-end;
+    margin-left: 1em;
+    margin-bottom: 20%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .current-track-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .current-track-status {
+    width: 100%;
+  }
+
+  .current-track-info-container {
+    margin-top: 70px;
+    width: 90%;
+  }
+
+  .current-track-image-container {
+    width: 90%;
+  }
+
+  .current-track-image {
+    width: 100%;
+  }
+
+  .current-track-info-container #bars {
+    visibility: hidden;
+  }
 }
 
 .current-track-loading {
@@ -14,19 +69,15 @@
 .current-track-info-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   height: 100%;
-  align-self: flex-end;
-  margin-right: 1em;
   align-items: flex-end;
-  margin-bottom: 20%;
 }
 
 .current-track-artist {
   color: white;
   font-family: 'Kanit', sans-serif;
   font-weight: 600;
-  font-size: 4vw;
+  font-size: 3em;
   text-transform: uppercase;
   text-align: right;
 }
@@ -35,36 +86,26 @@
   color: white;
   font-family: 'Kanit', sans-serif;
   font-weight: 300;
-  font-size: 2vw;
+  font-size: 2em;
   font-style: italic;
   margin-bottom: 1em;
   text-align: right;
 }
 
-.current-track-image {
-  width: 60%;
-  max-height: 600px;
-}
-
 .current-track-image-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   height: 100%;
-  align-self: flex-end;
-  margin-left: 1em;
-  margin-bottom: 20%;
 }
 
 .current-track-status {
   display: flex;
   flex-direction: row;
-  width: 50%;
   justify-content: space-evenly;
   align-items: center;
   font-family: 'Kanit', sans-serif;
   font-weight: 600;
-  font-size: 1.25vw;
+  font-size: 1em;
   text-transform: uppercase;
   border-style: solid none solid none;
   border-color: white;
@@ -78,7 +119,7 @@
 
 .refresh {
   filter: invert(1);
-  height: 50px;
-  width: 50px;
+  height: 3em;
+  width: 3em;
 }
 

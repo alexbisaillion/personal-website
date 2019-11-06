@@ -8,8 +8,8 @@
 
 .list-entry-image {
   object-fit: cover;
-  width: 75px;
-  height: 75px;
+  width: 5em;
+  height: 5em;
   margin: 15px;
 }
 

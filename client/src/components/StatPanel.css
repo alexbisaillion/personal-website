@@ -1,13 +1,51 @@
-.stat-section-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  height: 100vh;
-  margin-left: 15px;
-  margin-right: 15px;
+@media only screen and (min-width: 768px) {
+  .stat-section-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    height: 100vh;
+    padding: 15px;
+  }
+
+  .stat-section-container > div {
+    width: 45%;
+    height: 75%;
+  }
+
+  .stat-section-container > .stat-panel-info-container {
+    margin-right: 15px;
+  }
+
+  .stat-section-container > .list-container {
+    margin-left: 15px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .stat-section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    padding: 15px;
+  }
+
+  .stat-section-container > div {
+    width: 100%;
+    height: 50%;
+  }
+
+  .stat-panel-section {
+    margin-bottom: 30px;
+  }
+
+  .stat-section-container .list-container {
+    height: 50%;
+  }
 }
 
 .results-form-container {
@@ -57,16 +95,16 @@ select {
   height: 75%;
   width: 45%;
   align-items: center;
-  margin-right: 15px;
 }
 
 .stat-panel-info-header {
   color: white;
   font-family: 'Kanit', sans-serif;
   font-weight: 600;
-  font-size: 4vw;
+  font-size: 4em;
   text-transform: uppercase;
   justify-self: center;
+  text-align: center;
 }
 
 .stat-panel-section {
@@ -81,7 +119,7 @@ select {
 .stat-panel-section-header {
   font-family: 'Kanit', sans-serif;
   font-weight: 600;
-  font-size: 2vw;
+  font-size: 1.75em;
   width: 50%;
   align-self: center;
   text-align: center;
@@ -95,7 +133,7 @@ select {
 }
 
 .stat-panel-info-list > span {
-  font-size: 1.25vw;
+  font-size: 1.25em;
 }
 
 .stat-panel-popularity {
@@ -125,11 +163,12 @@ select {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  font-size: 1.25vw;
+  font-size: 1.25em;
 }
 
 .stat-panel-album-title:hover {
   overflow: visible;
+  z-index: 1;
 }
 
 .stat-panel-album {

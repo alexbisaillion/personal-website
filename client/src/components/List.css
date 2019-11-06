@@ -1,12 +1,9 @@
 .list-container {
   display: flex;
   flex-direction: column;
-  height: 75%;
-  width: 45%;
   overflow: scroll;
   overflow-x: hidden;
   border-style: none none solid none;
   border-color: #535353;
   background-color: #121212;
-  margin-left: 15px;
 }
