@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 90px;
+  margin-top: 70px;
   margin-bottom: 40px;
 }
 
@@ -15,23 +15,77 @@ h1 {
   font-size: 4em;
 }
 
-.currentlyPlaying {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
+@media only screen and (min-width: 768px) {
+  .cards {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .currentlyPlaying {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 250px;
+  }
+
+  .currentlyPlaying > span {
+    margin-right: 30px;
+  }
+
+  .trackArt {
+    max-height: 100%;
+    width: 12.5%;
+  }
 }
 
-.cards {
-  display: flex;
-  flex-direction: row;
-  width: 90%;
-  justify-content: space-around;
-  align-items: center;
-  padding-top: 50px;
-  padding-bottom: 50px;
+@media only screen and (max-width: 768px) {
+  .cards {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .cards > div {
+    margin-bottom: 30px;
+  }
+
+  .currentlyPlaying {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 450px;
+  }
+
+  .currentlyPlaying > span {
+    margin-bottom: 15px;
+  }
+
+  .trackArt {
+    width: 200px;
+    height: 200px;
+  }
+
+  .trackInformation {
+    text-align: center;
+  }
+
+  .trackArtist {
+    word-wrap: break-word;
+  }
 }
 
 .trackInformation {
@@ -43,23 +97,16 @@ h1 {
   margin-right: 30px;
 }
 
-.trackArt {
-  max-height: 100%;
-  width: 12.5%;
-}
-
 .trackArtist {
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 2.5vw;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  font-size: 2.5em;
 }
 
 .sectionHeader {
   font-weight: 600;
   font-size: 4em;
+  text-align: center;
 }
 
 .introduction {
