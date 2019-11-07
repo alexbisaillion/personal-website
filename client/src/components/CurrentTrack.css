@@ -30,6 +30,12 @@
     margin-left: 1em;
     margin-bottom: 20%;
   }
+
+  .current-track-loading {
+    grid-column: 1 / span 2;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -37,6 +43,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 750px;
+    justify-content: center;
   }
 
   .current-track-status {
@@ -59,12 +67,11 @@
   .current-track-info-container #bars {
     visibility: hidden;
   }
-}
 
-.current-track-loading {
-  grid-column: 1 / span 2;
-  display: flex;
-  justify-content: center;
+  .current-track-loading {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .current-track-info-container {

@@ -39,7 +39,7 @@ class Home extends Component {
             <span className="trackArtist">{this.state.currentTrack.artist}</span>
             <span style={{ fontSize: "1.25em"}}><i>{this.state.currentTrack.track}</i></span>
           </div>
-          <Soundwave colour={this.state.currentTrack.colour} infoWidth={this.state.infoWidth * 0.15} isPlaying={this.state.currentTrack.isPlaying} height="100px"></Soundwave>
+          <Soundwave colour={this.state.currentTrack.colour} infoWidth={this.state.infoWidth * 0.20} isPlaying={this.state.currentTrack.isPlaying} height="100px"></Soundwave>
         </div>
       )
     }

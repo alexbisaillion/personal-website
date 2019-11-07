@@ -22,6 +22,16 @@
   .stat-section-container > .list-container {
     margin-left: 15px;
   }
+
+  .stat-panel-info-container {
+    height: 75%;
+  }
+
+  .stat-panel-loading {
+    grid-column: 1 / span 2;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -32,10 +42,14 @@
     justify-items: center;
     justify-content: center;
     padding: 15px;
+    height: 1250px;
   }
 
   .stat-section-container > div {
     width: 100%;
+  }
+
+  .stat-section-container .list-container {
     height: 50%;
   }
 
@@ -43,8 +57,9 @@
     margin-bottom: 30px;
   }
 
-  .stat-section-container .list-container {
-    height: 50%;
+  .stat-panel-loading {
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -82,17 +97,10 @@ select {
   padding: 10px;
 }
 
-.stat-panel-loading {
-  grid-column: 1 / span 2;
-  display: flex;
-  justify-content: center;
-}
-
 .stat-panel-info-container {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 75%;
   width: 45%;
   align-items: center;
 }
@@ -146,8 +154,8 @@ select {
 
 .stat-panel-popularity-image {
   object-fit: cover;
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 60px;
   margin: 10px;
 }
 

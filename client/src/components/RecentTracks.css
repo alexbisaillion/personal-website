@@ -22,6 +22,17 @@
   .recent-tracks-container > .list-container {
     margin-left: 15px;
   }
+
+  .recent-tracks-album-title:hover {
+    overflow: visible;
+    z-index: 1;
+  }
+
+  .recent-tracks-loading {
+    grid-column: 1 / span 2;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -32,10 +43,14 @@
     justify-items: center;
     justify-content: center;
     padding: 15px;
+    height: 1250px;
   }
 
   .recent-tracks-container > div {
     width: 100%;
+  }
+
+  .recent-tracks-container .list-container {
     height: 50%;
   }
 
@@ -43,8 +58,9 @@
     margin-bottom: 30px;
   }
 
-  .recent-tracks-container .list-container {
-    height: 500px;
+  .recent-tracks-loading {
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -95,12 +111,6 @@
   font-size: 1.25em;
 }
 
-.recent-tracks-loading {
-  grid-column: 1 / span 2;
-  display: flex;
-  justify-content: center;
-}
-
 .recent-tracks-album-image {
   min-width: 2em;
   max-width: 2em;
@@ -114,11 +124,6 @@
   white-space: nowrap;
   overflow: hidden;
   font-size: 1.25em;
-}
-
-.recent-tracks-album-title:hover {
-  overflow: visible;
-  z-index: 1;
 }
 
 .recent-tracks-album {
