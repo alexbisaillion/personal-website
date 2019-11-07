@@ -11,6 +11,7 @@
     align-self: flex-end;
     margin-right: 1em;
     margin-bottom: 20%;
+    height: 60%;
     max-height: 600px;
   }
 
@@ -44,11 +45,11 @@
 
   .current-track-info-container {
     margin-top: 70px;
-    width: 90%;
+    width: 75%;
   }
 
   .current-track-image-container {
-    width: 90%;
+    width: 75%;
   }
 
   .current-track-image {
@@ -69,7 +70,6 @@
 .current-track-info-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
   align-items: flex-end;
 }
 
