@@ -1,19 +1,12 @@
 const express = require('express');
 const path = require('path');
 const routes = require('./spotify/routes');
+const sslRedirect = require('heroku-ssl-redirect');
 const app = express();
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
-
-if(process.env.NODE_ENV === 'production') {
-  app.use((req, res, next) => {
-    if (req.header('x-forwarded-proto') !== 'https')
-      res.redirect(`https://${req.header('host')}${req.url}`)
-    else
-      next()
-  })
-}
+app.use(sslRedirect());
 
 app.get('/tracks', (req, res) => {
   if (req.query.numResults && req.query.timeRange) {
