@@ -1,39 +1,29 @@
-# Personal Website
+# My Personal Website
 ---
 
-Alex Bisaillion
+### Background
 
-1/3/2019
+* This is the home of my personal website! You can reach it on the web at alexbisaillion.me.
+* Important things to know:
+  * The client side of this app was bootstrapped initially with [create-react-app](https://github.com/facebook/create-react-app) then modified to suit the needs of this project.
+  * I use an express server to handle all authenticated calls to the [Spotify API](https://developer.spotify.com/).
+  * The website is hosted on a Heroku hobby dyno.
+  * Cloudflare is being used to redirect all HTTP traffic to HTTPS.
+* Useful links:
+  * [GitHub Student Developer Pack](https://education.github.com/pack)
+  * [Create React App with an Express Backend](https://daveceddia.com/create-react-app-express-backend/)
+  * [Deploy React and Express to Heroku](https://daveceddia.com/deploy-react-express-app-heroku/)
+  * [Using Cloudflare with Heroku](http://hackingui.com/front-end/setup-https-on-heroku-cloudflare-namecheap/)
 
-Node version v10.15.0
+### Install/Launch
 
-NPM version 6.4.1
+* A `package.json` file is provided in both the main server directory and the client directory, so `npm install` will simply install all required dependencies.
+* Both the server and client can be launched from their respective `package.json` files using `npm start`.
+* You can reach the webpage locally at http://localhost:3000/.
 
-Tested on Windows 10
+### Dependencies
 
-### Install:
-
-* This app was bootstrapped initially with [create-react-app](https://github.com/facebook/create-react-app) and [express-generator](https://github.com/expressjs/generator), then modified to suit the needs of this project.
-* Simply execute the following in the command line to install all required modules: `npm install`.
-  * This must be done in both the `client` and `server` subdirectories.
-
-### Launch:
-
-* To launch the Express server, move to the `server` directory and type the following in the command line:
-
-  `set PORT=3001 && node bin/www`
-
-* To launch the React app, move to the `client` directory and type the following in the command line:
-   
-  `npm start`
-
-### Usage:
-
-* Visit any of the following URLs in Google Chrome:
-  * http://localhost:3000/music.html
-  * http://localhost:3000/music
-  * http://localhost:3000/index.html
-  
-### NOTES:
-
-* You must install all NPM modules before running, as they are not included in this repository.
+* [express](https://www.npmjs.com/package/express)
+* [moment](https://www.npmjs.com/package/moment)
+* [node-vibrant](https://www.npmjs.com/package/node-vibrant)
+* [spotify-web-api-node](https://www.npmjs.com/package/spotify-web-api-node)  
