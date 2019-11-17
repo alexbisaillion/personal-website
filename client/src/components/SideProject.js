@@ -61,13 +61,13 @@ class SideProject extends Component {
             {this.state.images.map(item =>
               <ImageZoom
                 image={{
-                  src: item,
+                  src: item.preview,
                   alt: 'sideproject',
                   className: 'img',
-                  style: { width: '100%' }
+                  style: { width: item.width }
                 }}
                 zoomImage={{
-                  src: item,
+                  src: item.full,
                   alt: 'sideproject'
                 }}
                 defaultStyles={{
