@@ -5,6 +5,7 @@
   justify-content: center;
   margin-top: 70px;
   margin-bottom: 40px;
+  overflow: hidden;
 }
 
 .home-container a {
@@ -36,7 +37,7 @@ h1 {
     height: 250px;
   }
 
-  .listening-panel > span {
+  .listening-panel {
     margin-right: 30px;
   }
 
@@ -75,6 +76,7 @@ h1 {
   }
 
   .trackArt {
+    margin-bottom: 10px;
     width: 200px;
     height: 200px;
   }
@@ -85,6 +87,15 @@ h1 {
 
   .trackArtist {
     word-wrap: break-word;
+  }
+
+  .listening-panel {
+    text-align: center;
+  }
+
+  .listening-panel > a {
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 }
 
