@@ -14,8 +14,8 @@ class ListEntry extends Component {
 
     return (
       <div className="list-entry-container" key={this.props.id}>
-        <a href={this.props.url} target="_blank" rel="noopener noreferrer" className="list-entry-image">
-          <img src={this.props.art} alt="art" style={{ width: "100%", height: "100%"}}/>
+        <a href={this.props.url} target="_blank" rel="noopener noreferrer">
+          <img src={this.props.art} alt="art" className="list-entry-image"/>
         </a>
         <div className="list-entry-info-container">
           {formattedArtist}
