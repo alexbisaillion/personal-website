@@ -36,13 +36,17 @@ h1 {
     height: 250px;
   }
 
-  .currentlyPlaying > span {
+  .listening-panel > span {
     margin-right: 30px;
   }
 
   .trackArt {
     max-height: 100%;
     width: 12.5%;
+  }
+
+  .listening-panel > a {
+    margin-top: 20px;
   }
 }
 
@@ -67,11 +71,7 @@ h1 {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    height: 450px;
-  }
-
-  .currentlyPlaying > span {
-    margin-bottom: 15px;
+    height: 550px;
   }
 
   .trackArt {
@@ -89,7 +89,6 @@ h1 {
 }
 
 .trackInformation {
-  height: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;

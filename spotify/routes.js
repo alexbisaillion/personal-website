@@ -65,7 +65,7 @@ function createTopTracksResponse(data) {
   let years = {};
   let albums = {}
   for (let i = 0; i < data.body.items.length; i++) {
-    tracks.push({id : data.body.items[i].id, artist: data.body.items[i].artists[0].name, image: data.body.items[i].album.images[1].url, title: data.body.items[i].name});
+    tracks.push({id : data.body.items[i].id, artist: data.body.items[i].artists[0].name, image: data.body.items[i].album.images[1].url, title: data.body.items[i].name, url: data.body.items[i].external_urls.spotify});
     let currentYear = new Date(data.body.items[i].album.release_date);
     let currentAlbum = data.body.items[i].artists[0].name + "|" + data.body.items[i].album.name + "|" + data.body.items[i].album.images[1].url;
     years[currentYear.getFullYear()] = years[currentYear.getFullYear()] ? years[currentYear.getFullYear()] + 1 : 1;
@@ -90,7 +90,7 @@ function createTopArtistsResponse(data) {
   let mostPopularArtist = { artist: "", popularity: -1 };
   let leastPopularArtist = { artist: "", popularity: 101 };
   for (let i = 0; i < data.body.items.length; i++) {
-    artists.push({id : data.body.items[i].id, artist: data.body.items[i].name, image: data.body.items[i].images[1].url});
+    artists.push({id : data.body.items[i].id, artist: data.body.items[i].name, image: data.body.items[i].images[1].url, url: data.body.items[i].external_urls.spotify});
     for (let j = 0; j < data.body.items[i].genres.length; j++) {
       let genre = data.body.items[i].genres[j];
       genres[genre] = genres[genre] ? genres[genre] + 1 : 1;
@@ -111,11 +111,23 @@ function createTopArtistsResponse(data) {
 }
 
 function createCurrentTrackResponse(data) {
-  return ({artist: data.body.item.artists[0].name, track: data.body.item.name, album: data.body.item.album.name, art: data.body.item.album.images[0].url, isPlaying: data.body.is_playing, date: moment(new Date(data.body.timestamp)).fromNow()})
+  let url;
+  if (data.body.context) {
+    url = data.body.context.external_urls.spotify;
+  } else {
+    url = data.body.item.external_urls.spotify;
+  }
+  return ({artist: data.body.item.artists[0].name, track: data.body.item.name, album: data.body.item.album.name, art: data.body.item.album.images[0].url, isPlaying: data.body.is_playing, date: moment(new Date(data.body.timestamp)).fromNow(), url: url})
 }
 
 function createLastTrackResponse(data) {
-  return ({artist: data.body.items[0].track.artists[0].name, track: data.body.items[0].track.name, art: data.body.items[0].track.album.images[0].url, date: moment(new Date(data.body.items[0].played_at)).fromNow()});
+  let url;
+  if (data.body.items[0].context) {
+    url = data.body.items[0].context.external_urls.spotify;
+  } else {
+    url = data.body.items[0].track.external_urls.spotify;
+  }
+  return ({artist: data.body.items[0].track.artists[0].name, track: data.body.items[0].track.name, art: data.body.items[0].track.album.images[0].url, date: moment(new Date(data.body.items[0].played_at)).fromNow(), url: url});
 }
 
 function createRecentTracksResponse(data) {
@@ -124,10 +136,16 @@ function createRecentTracksResponse(data) {
   let years = {};
   let albums = {};
   for (let i = 0; i < data.body.items.length; i++) {
+    let url;
+    if (data.body.items[i].context) {
+      url = data.body.items[i].context.external_urls.spotify;
+    } else {
+      url = data.body.items[i].track.external_urls.spotify;
+    }
     let currentArtist = data.body.items[i].track.artists[0].name;
     let currentYear = new Date(data.body.items[i].track.album.release_date);
     let currentAlbum = currentArtist + "|" + data.body.items[i].track.album.name + "|" + data.body.items[i].track.album.images[1].url;
-    tracks.push({id : data.body.items[i].played_at, artist: currentArtist, title: data.body.items[i].track.name, art: data.body.items[i].track.album.images[1].url, date: moment(new Date(data.body.items[i].played_at)).fromNow()});
+    tracks.push({id : data.body.items[i].played_at, artist: currentArtist, title: data.body.items[i].track.name, art: data.body.items[i].track.album.images[1].url, date: moment(new Date(data.body.items[i].played_at)).fromNow(), url: url});
     artists[currentArtist] = artists[currentArtist] ? artists[currentArtist] + 1 : 1;
     years[currentYear.getFullYear()] = years[currentYear.getFullYear()] ? years[currentYear.getFullYear()] + 1 : 1;
     albums[currentAlbum] = albums[currentAlbum] ? albums[currentAlbum] + 1 : 1;

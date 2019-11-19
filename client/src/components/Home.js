@@ -33,8 +33,15 @@ class Home extends Component {
       let gradient = `radial-gradient(circle at top, #181818, #181818, ${this.state.currentTrack.colour})`
       currentlyPlaying = (
         <div className="currentlyPlaying" style={{background: gradient, borderRadius: "25px", borderStyle: "solid", borderColor: this.state.currentTrack.colour}} ref={this.info}>
-          <span style={{ fontSize: "1em" }}>{this.state.currentTrack.isPlaying ? "I'm currently listening to..." : "I last listened to..."}</span>
-          <img src={this.state.currentTrack.art} alt="art" className="trackArt"/>
+          <div className="listening-panel" style={{display: "flex", flexDirection: "column"}}>
+            <span style={{ fontSize: "1em" }}>{this.state.currentTrack.isPlaying ? "I'm currently listening to..." : "I last listened to..."}</span>
+            <a href="https://www.spotify.com/" target="_blank" rel="noopener noreferrer">
+              <img src='/img/Spotify_Logo_RGB_Green.png' width="175px" alt="spotify-logo"/>
+            </a>
+          </div>
+          <a href={this.state.currentTrack.url} target="_blank" rel="noopener noreferrer" className="trackArt">
+            <img src={this.state.currentTrack.art} alt="art" style={{ width: "100%", height: "100%"}}/>
+          </a>
           <div className="trackInformation">
             <span className="trackArtist">{this.state.currentTrack.artist}</span>
             <span style={{ fontSize: "1.25em"}}><i>{this.state.currentTrack.track}</i></span>

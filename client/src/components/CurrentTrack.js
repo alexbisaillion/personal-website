@@ -53,7 +53,9 @@ class CurrentTrack extends Component {
           <Soundwave colour={this.state.currentTrack.colour} infoWidth={this.state.infoWidth * 0.25} isPlaying={this.state.currentTrack.isPlaying} height="25%"></Soundwave>
         </div>
         <div className="current-track-image-container">
-          <img src={this.state.currentTrack.art} alt="art" className="current-track-image"/>
+          <a href={this.state.currentTrack.url} target="_blank" rel="noopener noreferrer" className="current-track-image">
+            <img src={this.state.currentTrack.art} alt="art" style={{ width: "100%", height: "100%"}}/>
+          </a>
         </div>
       </div>
     );

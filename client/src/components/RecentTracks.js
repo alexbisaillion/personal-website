@@ -60,7 +60,7 @@ class RecentTracks extends Component {
         </div>
         <List>
           {this.state.recentTracks.map(track =>
-            <ListEntry art={track.art} artist={track.artist} track={track.title} timestamp={track.date} key={track.id}></ListEntry>
+            <ListEntry art={track.art} artist={track.artist} track={track.title} timestamp={track.date} key={track.id} url={track.url}></ListEntry>
           )}
         </List>
       </div>

@@ -155,7 +155,7 @@ class StatPanel extends Component {
         </div>
         <List>
           {this.state.items.map(item =>
-            <ListEntry art={item.image} artist={item.artist} track={item.title} key={item.id}></ListEntry>
+            <ListEntry art={item.image} artist={item.artist} track={item.title} key={item.id} url={item.url}></ListEntry>
           )}
         </List>
       </div>
