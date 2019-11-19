@@ -1,9 +1,9 @@
-# My Personal Website
+# My Personal Website!
 ---
 
 ### Background
 
-* This is the home of my personal website! You can reach it on the web at alexbisaillion.me.
+* This is the home of my personal website! You can reach it on the web at [alexbisaillion.me](https://alexbisaillion.me/).
 * Important things to know:
   * The client side of this app was bootstrapped initially with [create-react-app](https://github.com/facebook/create-react-app) then modified to suit the needs of this project.
   * I use an express server to handle all authenticated calls to the [Spotify API](https://developer.spotify.com/).
@@ -21,7 +21,7 @@
 * Both the server and client can be launched from their respective `package.json` files using `npm start`.
 * You can reach the webpage locally at http://localhost:3000/.
 
-### Dependencies
+### Special thanks to...
 
 * [express](https://www.npmjs.com/package/express)
 * [moment](https://www.npmjs.com/package/moment)
