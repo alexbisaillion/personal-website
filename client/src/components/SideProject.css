@@ -104,3 +104,12 @@
   box-shadow: 0px 15px 20px grey;
   transform: translateY(-7px);
 }
+
+.side-project-link {
+  text-decoration: none;
+  color: white;
+}
+
+.side-project-link:hover {
+  color: lightgrey;
+}

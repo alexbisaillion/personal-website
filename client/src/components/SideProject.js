@@ -12,16 +12,22 @@ class SideProject extends Component {
       technologies: this.props.technologies,
       github: this.props.github,
       images: this.props.images,
+      link: this.props.link,
       hoverItem: ""
     };
   }
 
   render() {
-    console.log(this.state);
+    let name;
+    if (this.state.link) {
+      name = <a href={this.state.link} className='side-project-link' target="_blank" rel="noopener noreferrer">{this.state.name}</a>;
+    } else {
+      name = <span>{this.state.name}</span>;
+    }
     return (
       <div className="side-project-container">
         <div className="side-project-header">
-          <span>{this.state.name}</span>
+          {name}
         </div>
         <div className="side-project-body">
 
