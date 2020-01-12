@@ -54,7 +54,7 @@ class Home extends Component {
       <div className="home-container">
         <div className="introduction">
           <span className="sectionHeader">ALEX BISAILLION</span>
-          <p>Hi there! I'm Alex Bisaillion, a third-year computer science student at Carleton University. This is my personal website, where I experiment with web development. Enjoy your stay!</p>
+          <p>Hi there! I'm Alex Bisaillion, a fourth-year computer science student at Carleton University. This is my personal website, where I experiment with web development. Enjoy your stay!</p>
         </div>
 
         <div className="cards">

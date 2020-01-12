@@ -8,13 +8,13 @@
   {
     "title": "RESUME",
     "image": "/img/resumePreview.png",
-    "description": "This is the latest 1-page version of my resume in PDF format, updated as of November 2019. Subject to change.",
+    "description": "This is the latest 1-page version of my resume in PDF format, updated as of January 2020. Subject to change.",
     "link": "/resume.pdf"
   },
   {
     "title": "SIDE PROJECTS",
     "image": "/img/sideProjectPreview.png",
-    "description": "This is where I document my side projects, including features used in this website and my \"Local Music Manager\" project.",
+    "description": "This is where I document my side projects, including this website, my Split Scrobbler web app, and my Local Music Manager Java app.",
     "link": "/sideprojects/"
   }
 ]
