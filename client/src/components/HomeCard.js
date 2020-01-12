@@ -33,15 +33,23 @@ export default function HomeCard(props) {
   if (props.info.link.endsWith(".pdf")) {
     link = (
       <a href={props.info.link} target="_blank" rel="noopener noreferrer">
-        <span style={{fontFamily: 'Kanit, sans-serif', fontWeight: 600, fontSize: '1.25em', color: '#56B5D9'}}>View</span>
+        <CardActions>
+          <Button size="small" color="primary">
+            <span style={{fontFamily: 'Kanit, sans-serif', fontWeight: 600, fontSize: '1.25em', color: '#56B5D9'}}>View</span>
+          </Button>
+        </CardActions>
       </a>
-    )
+    );
   } else {
     link = (
       <Link to={props.info.link}>
-        <span style={{fontFamily: 'Kanit, sans-serif', fontWeight: 600, fontSize: '1.25em', color: '#56B5D9'}}>View</span>
+        <CardActions>
+          <Button size="small" color="primary">
+            <span style={{fontFamily: 'Kanit, sans-serif', fontWeight: 600, fontSize: '1.25em', color: '#56B5D9'}}>View</span>
+          </Button>
+        </CardActions>
       </Link>
-    )
+    );
   }
 
   return (
@@ -61,11 +69,7 @@ export default function HomeCard(props) {
             </span>
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            {link}
-          </Button>
-        </CardActions>
+        {link}
       </Card>
     </ThemeProvider>
   );
