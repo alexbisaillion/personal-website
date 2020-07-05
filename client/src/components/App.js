@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import Music from './Music';
+import Music from './spotify-stats/Music';
 import Home from './Home';
 import SideProjectPage from './SideProjectPage';
 import './App.css'

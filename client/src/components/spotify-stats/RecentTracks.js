@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './RecentTracks.css'
 import List from './List';
 import ListEntry from './ListEntry';
-import LoadingIcon from './LoadingIcon';
+import LoadingIcon from '../LoadingIcon';
 
 class RecentTracks extends Component {
   constructor(props) {

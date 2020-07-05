@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './CurrentTrack.css'
-import Soundwave from './Soundwave';
-import LoadingIcon from './LoadingIcon';
-import refresh from '../img/refresh.svg'
+import Soundwave from '../Soundwave';
+import LoadingIcon from '../LoadingIcon';
+import refresh from '../../img/refresh.svg'
 
 class CurrentTrack extends Component {
   constructor(props) {

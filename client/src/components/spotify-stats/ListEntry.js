@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ListEntry.css'
 
-const seenLive = require('../data/live');
+const seenLive = require('../../data/live');
 
 class ListEntry extends Component {
   render() {
